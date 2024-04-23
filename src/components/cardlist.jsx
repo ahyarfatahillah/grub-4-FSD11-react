@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import data from "../mocks/dummy.json"
-function App() {
-    // const [data, setData] = useState(null);
+import {
+    Link
+  } from "react-router-dom";
+// import data from "../mocks/dummy.json"
+function Datalist() {
+    const [data, setData] = useState(null);
 
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    //       const jsonData = await response.json();
-    //       console.log(jsonData)
-    //       setData(jsonData);
-    //     } catch (error) {
-    //       console.error('Error fetching data:', error);
-    //     }
-    //   };
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://6627b4d7b625bf088c0968aa.mockapi.io/products");
+          const jsonData = await response.json();
+          console.log(jsonData)
+          setData(jsonData);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
 
-    //   fetchData();
-    // }, []);
+      fetchData();
+    }, []);
     function monthName(data) {
-        const date = new Date(data * 1000);
+        const date = new Date(data);
         const month = date.getMonth();
         const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
         const monthName = monthList[month];
@@ -26,26 +29,27 @@ function App() {
     }
 
     function dateConverter(data) {
-        const dateUnix = new Date(data * 1000);
+        const dateUnix = new Date(data);
         const dateNew = dateUnix.getDate();
         return dateNew;
     }
-    // const wishlist = data.wishlist ? "visible" : "hidden";
-    // const wishlist2 = data.wishlist ? "hidden" : "visible";
-    // const guestFav = data.favorite ? "visible" : "hidden";
-    // const month = monthName(data.date);
-    // const date = dateConverter(data.date);
+
     return (
 
         <div>
             {data ? (
-                
                 <section className="flex products">
-                    {data.map(item => (
-                        <div key={item.id}>
+                    {data.map(item => {
+                        const wishlist = item.wishlist ? "visible" : "hidden";
+                        const wishlist2 = item.wishlist ? "hidden" : "visible";
+                        const guestFav = item.favorite ? "visible" : "hidden";
+                        const month = monthName(item.date);
+                        const date = dateConverter(item.date);
+                        return (<div key={item.id} className="card-product">
                             {/* <p>{item.id}</p> */}
-                            <a href={`#${item.id}`} >
-                                <div className="card-product">
+                            {/* card product jsx */}
+                            <Link to="about">
+                                <div>
                                     <img className="img-products" src={item.picture} alt="img-card" />
                                     <div className="mx-2">
                                         <div>
@@ -58,13 +62,14 @@ function App() {
                                             <h2 className="right">&#9733; {item.star}</h2>
                                         </div>
                                         <p className="color-prdct">{item.distance} kilometers away</p>
-                                        <p className="color-prdct">{monthName(item.date)} {dateConverter(item.date)}</p>
+                                        <p className="color-prdct">{month} {dateConverter(date)}</p>
                                         <p><strong>{item.price}</strong> night</p>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
-                    ))}
+                        )
+                    })}
                 </section>
             ) : (
                 <p>Loading...</p>
@@ -73,4 +78,4 @@ function App() {
     );
 }
 
-export default App;
+export default Datalist;

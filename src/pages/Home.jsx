@@ -1,5 +1,5 @@
 import "../assets/styles/home.css";
-import Card from "../components/cardproduct"
+import Card from "../components/cardlist"
 const Home = () => {
     return (
         <div className="home">

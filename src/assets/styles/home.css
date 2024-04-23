@@ -6,11 +6,13 @@ body {
   }
   
   .card-product {
+    flex:1 1 0;
     position: relative;
   }
   
   .products {
     flex-wrap: wrap;
+    gap:3em;
     align-items: center;
     justify-content: center;
   }
@@ -44,10 +46,17 @@ body {
   }
   
   .rating {
+    width : 100%;
     display: flex;
     justify-content: space-between;
   }
-  
+  .rating h2 {
+    width :60%;
+  }
+  .rating h2.right{
+    width: 40%;
+    text-align: right;
+  }
   .button {
     background-color: #222425;
     font-weight: bold;

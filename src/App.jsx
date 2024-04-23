@@ -1,9 +1,26 @@
-import Home from './pages/Home'
+import Home from "./pages/Home"
 import './App.scss';
-function App() {
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<Home/>,
+  },
+  {
+    path: "about",
+    element: <div>About</div>,
+  },
+]);
+
+function App() {
   return (
-    <Home/>
+    <RouterProvider router={router} />
   )
 }
 
