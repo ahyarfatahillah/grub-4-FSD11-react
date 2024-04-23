@@ -155,8 +155,8 @@ const Home = () => {
                 </div>
             </header>
             <main className="main-container sm:mt-[90px] md:mt-[180px] lg:mt-[200px]">
-                <section className="flex products">
-                    <a href="../ProductDetail/index.html">
+                {/* <section className="flex products"> */}
+                    {/* <a href="../ProductDetail/index.html">
                         <div className="card-product">
                             <img
                                 className="img-products"
@@ -187,11 +187,10 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
-                    </a>
-
+                    </a> */}
                     <Card/>
 
-                </section>
+                {/* </section> */}
                 <div className="my-16 text-center">
                     <p className="font-bold">Continue exploring arctic homes</p>
                     <button className=" my-6 button button1">Show More</button>
