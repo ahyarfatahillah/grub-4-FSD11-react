@@ -1,11 +1,26 @@
-import { useState } from 'react'
+import Home from "./pages/Home"
+import './App.scss';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<Home/>,
+  },
+  {
+    path: "about",
+    element: <div>About</div>,
+  },
+]);
 
 function App() {
-
   return (
-    <>
-    <h1 className='bg-blue-500'>Kelompok-4</h1>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
