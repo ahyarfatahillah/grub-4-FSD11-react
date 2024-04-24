@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {
-    Link
-  } from "react-router-dom";
+import {Link} from "react-router-dom";
 // import data from "../mocks/dummy.json"
-function Datalist() {
+function Card() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("https://6627b4d7b625bf088c0968aa.mockapi.io/products");
+          const response = await fetch("http://localhost:3000/data");
           const jsonData = await response.json();
           console.log(jsonData)
           setData(jsonData);
@@ -21,7 +19,7 @@ function Datalist() {
       fetchData();
     }, []);
     function monthName(data) {
-        const date = new Date(data);
+        const date = new Date(data*1000);
         const month = date.getMonth();
         const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
         const monthName = monthList[month];
@@ -29,7 +27,7 @@ function Datalist() {
     }
 
     function dateConverter(data) {
-        const dateUnix = new Date(data);
+        const dateUnix = new Date(data*1000);
         const dateNew = dateUnix.getDate();
         return dateNew;
     }
@@ -53,9 +51,9 @@ function Datalist() {
                                     <img className="img-products" src={item.picture} alt="img-card" />
                                     <div className="mx-2">
                                         <div>
-                                            <h2 id="guest-fav" className={`text-fav ${item.favorite ? "visible" : "hidden"}`}>Guest favorite</h2>
-                                            <div className={`zoom love-product ${item.wishlist ? "visible" : "hidden"}`}><i className="fa-solid fa-heart fill-white text-white"></i></div>
-                                            <div className={`zoom love-product ${item.wishlist ? "hidden" : "visible"}`}><i className="fa-regular fa-heart fill-white text-white"></i></div>
+                                            <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
+                                            <div className={`zoom love-product ${wishlist}`}><i className="fa-solid fa-heart fill-white text-white"></i></div>
+                                            <div className={`zoom love-product ${wishlist2}`}><i className="fa-regular fa-heart fill-white text-white"></i></div>
                                         </div>
                                         <div className="rating">
                                             <h2>{`${item.address}, ${item.country}`}</h2>
@@ -63,7 +61,7 @@ function Datalist() {
                                         </div>
                                         <p className="color-prdct">{item.distance} kilometers away</p>
                                         <p className="color-prdct">{month} {dateConverter(date)}</p>
-                                        <p><strong>{item.price}</strong> night</p>
+                                        <p><strong>{new Intl.NumberFormat('id-id',{ style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
                                     </div>
                                 </div>
                             </Link>
@@ -72,10 +70,10 @@ function Datalist() {
                     })}
                 </section>
             ) : (
-                <p>Loading...</p>
+                <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span></p>
             )}
         </div>
     );
 }
 
-export default Datalist;
+export default Card;
