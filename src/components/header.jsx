@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -30,7 +30,7 @@ const Header = () => {
                 <button className="p-3 flex items-center text-sm font-medium hover:bg-gray-100 hover:rounded-full">
                     <span className="material-symbols-outlined">language</span>
                 </button>
-                <a
+                <Link to="Login"
                     href="../Login/index.html"
                     className="flex justify-evenly items-center gap-2 rounded-full border shadow-sm h-10 w-20 py-6 pl-3 pr-2 hover:shadow-md hover:cursor-pointer"
                 >
@@ -38,7 +38,7 @@ const Header = () => {
                     <button className="bg-gray-500 text-white rounded-full text-center w-7 h-7">
                         <i className="fa-solid fa-user" />
                     </button>
-                </a>
+                </Link>
             </div>
         </div>
     </div>
