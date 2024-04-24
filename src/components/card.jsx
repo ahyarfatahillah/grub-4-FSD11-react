@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 // import data from "../mocks/dummy.json"
-function Datalist() {
+function Card() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -70,10 +70,10 @@ function Datalist() {
                     })}
                 </section>
             ) : (
-                <p>Loading...</p>
+                <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span></p>
             )}
         </div>
     );
 }
 
-export default Datalist;
+export default Card;
