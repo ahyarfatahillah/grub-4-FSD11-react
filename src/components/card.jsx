@@ -46,7 +46,7 @@ function Card() {
                         return (<div key={item.id} className="card-product">
                             {/* <p>{item.id}</p> */}
                             {/* card product jsx */}
-                            <Link to="about">
+                            <Link to="Product">
                                 <div>
                                     <img className="img-products" src={item.picture} alt="img-card" />
                                     <div className="mx-2">
