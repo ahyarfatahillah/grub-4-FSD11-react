@@ -1,5 +1,6 @@
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+// import ProductDetail from ".pages/ProductDetail"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "Login",
     element: <Login/>
+  },  
+  {
+    path: "ProductDetail",
+    element: <div>ProductDetail</div>
+    // <ProductDetail/>
   },
 ]);
 

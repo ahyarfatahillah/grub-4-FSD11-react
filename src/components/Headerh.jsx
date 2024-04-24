@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -30,7 +30,7 @@ const Header = () => {
                 <button className="p-3 flex items-center text-sm font-medium hover:bg-gray-100 hover:rounded-full">
                     <span className="material-symbols-outlined">language</span>
                 </button>
-                <Link   Link to="Login"
+                <Link to="Login"
                     href="../Login/index.html"
                     className="flex justify-evenly items-center gap-2 rounded-full border shadow-sm h-10 w-20 py-6 pl-3 pr-2 hover:shadow-md hover:cursor-pointer"
                 >
