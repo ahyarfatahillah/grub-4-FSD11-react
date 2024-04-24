@@ -47,7 +47,7 @@ function Card() {
                             {/* <p>{item.id}</p> */}
                             {/* card product jsx */}
                             <div>
-                                <Link to="about">
+                                <Link to="ProductDetail">
                                     <img className="img-products" src={item.picture} alt="img-card" />
                                 </Link>
                                 <div className="mx-2">
@@ -71,7 +71,7 @@ function Card() {
                     })}
                 </section>
             ) : (
-                <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span></p>
+                <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span> then <span className='text-rose-600 font-bold'>refresh this page</span></p>
             )}
         </div>
     );
