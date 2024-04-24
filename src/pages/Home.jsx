@@ -1,7 +1,7 @@
 import "../assets/styles/home.css";
-import Main from "../components/listproduct"
-import Header from "../components/header"
-import Footer from "../components/footer"
+import Main from "../components/ListProduct"
+import Header from "../components/Headerh"
+import Footer from "../components/Footerh"
 const Home = () => {
     return (
         <div className="home">
