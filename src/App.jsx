@@ -2,7 +2,7 @@
 import Login from "./pages/Login"
 =======
 import Home from "./pages/Home"
-import Login from "./pages/Login"
+// import Login from "./pages/Login"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -19,10 +19,11 @@ const router = createBrowserRouter([
   {
     path: "about",
     element: <div>About</div>,
-  },{
-    path: "Login",
-    element: <Login/>
   },
+  //{
+  //   path: "Login",
+  //   element: <Login/>
+  // },
 ]);
 
 >>>>>>> 95400e56d64ff478c88d694e6ee82936911cc60b
