@@ -1,4 +1,4 @@
-import "../assets/styles/Signup.css";
+import "../assets/styles/signup.css";
 import signupIMG from "../assets/img/signup.png"
 const Signup = () => {
     return (
