@@ -1,5 +1,6 @@
 import "../assets/styles/login.css";
 import loginIMG from "../assets/img/login.png"
+import { Link } from "react-router-dom";
 const Login =() =>{
     return (
         <div className="content">
@@ -53,7 +54,7 @@ const Login =() =>{
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
-              Don't Have An Account? <a href="../SignUp/index.html">Sign up</a>
+              Don't Have An Account?  <Link to="Signup">Sign up</Link>
             </p>
           </form>
           <div className="or-container">
