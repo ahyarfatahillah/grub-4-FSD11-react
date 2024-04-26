@@ -34,9 +34,9 @@ justify-content: center;
 background-size: cover;
 }
 .slide{
-width: 260px;
-height: 260px;
-border-radius: 10px;
+width: 255px;
+height: 255px;
+margin: 2px;
 }
 
 .text-fav {
