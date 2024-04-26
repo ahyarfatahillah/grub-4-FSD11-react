@@ -82,7 +82,6 @@ function Card() {
                         )
                     })}
                 </section>
-
             ) : (
                 <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span> then <span className='text-rose-600 font-bold'>refresh this page</span></p>
             )}

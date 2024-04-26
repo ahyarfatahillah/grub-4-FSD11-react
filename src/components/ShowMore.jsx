@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ShowMore = () => {
     return (
         <div className="my-16 text-center">
