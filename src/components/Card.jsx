@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
 // import data from "../mocks/dummy.json"
 function Card() {
     const [data, setData] = useState(null);
@@ -31,10 +34,8 @@ function Card() {
         const dateNew = dateUnix.getDate();
         return dateNew;
     }
-
     return (
-
-        <div>
+        <div className="mt-[200px] mb-[20px]">
             {data ? (
                 <section className="flex products">
                     {data.map(item => {
@@ -47,9 +48,20 @@ function Card() {
                             {/* <p>{item.id}</p> */}
                             {/* card product jsx */}
                             <div>
-                                <Link to="ProductDetail">
-                                    <img className="img-products" src={item.picture} alt="img-card" />
-                                </Link>
+                                {/* <Link to="ProductDetail"> */}
+                                <div className='slide'>
+                                    <Slide>
+                                        {/* for (let i=0;i<item.picture.length;i++){<img className="img-product" src={data[i]} />} */}
+                                        {/* <img className="img-product" src={item.picture[0]} alt="img-card" /> 
+                                    <img className="img-product" src={item.picture[1]} alt="img-card" />  */}
+                                        {/* <img className="img-product" src={item.picture[2]} alt="img-card" />  */}
+                                        {
+                                            item.picture.map((each, index) => <img key={index} className="img-product" src={each} />)
+                                        }
+                                    </Slide>
+                                </div>
+                                {/* <img className="img-product" src={item.picture[0]} alt="img-card" /> */}
+                                {/* </Link> */}
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
@@ -70,6 +82,7 @@ function Card() {
                         )
                     })}
                 </section>
+
             ) : (
                 <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span> then <span className='text-rose-600 font-bold'>refresh this page</span></p>
             )}
