@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 // import data from "../mocks/dummy.json"
+
 function Card() {
     const [data, setData] = useState(null);
 
@@ -31,10 +34,8 @@ function Card() {
         const dateNew = dateUnix.getDate();
         return dateNew;
     }
-
     return (
-
-        <div>
+        <div className="mt-[200px] mb-[20px]">
             {data ? (
                 <section className="flex products">
                     {data.map(item => {
@@ -44,26 +45,37 @@ function Card() {
                         const month = monthName(item.date);
                         const date = dateConverter(item.date);
                         return (<div key={item.id} className="card-product">
-                            {/* <p>{item.id}</p> */}
-                            {/* card product jsx */}
                             <div>
-                                <Link to="ProductDetail">
-                                    <img className="img-products" src={item.picture} alt="img-card" />
-                                </Link>
+                                {/* <Link to="ProductDetail"> */}
+                                <div className='slide'>
+                                    <Slide>
+                                        {/* <Link to="ProductDetail"> */}
+                                        {
+                                            item.picture.map((each, index) => (<img key={index} className="img-product" src={each} />))
+                                        }
+                                        {/* </Link> */}
+                                    </Slide>
+                                </div>
+                                {/* <img className="img-product" src={item.picture[0]} alt="img-card" /> */}
+                                {/* </Link> */}
+
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
                                         <div className={`zoom love-product ${wishlist}`}><i className="fa-solid fa-heart fill-white text-white"></i></div>
                                         <div className={`zoom love-product ${wishlist2}`}><i className="fa-regular fa-heart fill-white text-white"></i></div>
                                     </div>
+                                    {/* <Link to="ProductDetail"> */}
                                     <div className="rating">
                                         <h2>{`${item.address}, ${item.country}`}</h2>
                                         <h2 className="right">&#9733; {item.star}</h2>
                                     </div>
+                                    {/* </Link> */}
                                     <p className="color-prdct">{item.distance} kilometers away</p>
                                     <p className="color-prdct">{month} {dateConverter(date)}</p>
                                     <p><strong>{new Intl.NumberFormat('id-id', { style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
                                 </div>
+
                             </div>
 
                         </div>

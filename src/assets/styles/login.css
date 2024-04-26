@@ -146,7 +146,6 @@ div a:hover{
     transition: 0.3s ease;
 }
 /* button google */
-
 .or-container h3{
     text-align: center;
     align-items: center;
@@ -155,7 +154,6 @@ div a:hover{
     font-size: 20px;
     width: 100%;
     position:relative;
-
     }
     .or-container h3:before{
     content: "";
@@ -232,7 +230,6 @@ div a:hover{
         width:90px;
     }
   }
-
   @media only screen and (min-width: 1025px) {
     .top-img {
         display:none;        
