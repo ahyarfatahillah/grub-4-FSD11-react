@@ -6,7 +6,6 @@ import 'react-slideshow-image/dist/styles.css'
 
 function Card() {
     const [data, setData] = useState(null);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -18,7 +17,6 @@ function Card() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
     function monthName(data) {
@@ -34,8 +32,20 @@ function Card() {
         const dateNew = dateUnix.getDate();
         return dateNew;
     }
+    function isImage(data) {
+        if (data.length < 2) {
+            return (<img className="img-product" src={data} alt="img-card" />)
+        } else {
+            return (
+                <div className='slide'>
+                    <Slide autoplay={false}>
+                        {data.map((each, index) => (<Link to="ProductDetail" key={index}><img className="img-product" src={each} /></Link>))}
+                    </Slide>
+                </div>)
+        }
+    }
     return (
-        <div className="mt-[200px] mb-[20px]">
+        <div className="xl:mt-[200px] mb-[20px]">
             {data ? (
                 <section className="flex products">
                     {data.map(item => {
@@ -45,34 +55,22 @@ function Card() {
                         const month = monthName(item.date);
                         const date = dateConverter(item.date);
                         return (<div key={item.id} className="card-product">
-                            <div>
-                                {/* <Link to="ProductDetail"> */}
-                                <div className='slide'>
-                                    <Slide>
-                                        {/* <Link to="ProductDetail"> */}
-                                        {
-                                            item.picture.map((each, index) => (<img key={index} className="img-product" src={each} />))
-                                        }
-                                        {/* </Link> */}
-                                    </Slide>
-                                </div>
-                                {/* <img className="img-product" src={item.picture[0]} alt="img-card" /> */}
-                                {/* </Link> */}
-
+                            <div>       
+                                {isImage(item.picture)}
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
                                         <div className={`zoom love-product ${wishlist}`}><i className="fa-solid fa-heart fill-white text-white"></i></div>
                                         <div className={`zoom love-product ${wishlist2}`}><i className="fa-regular fa-heart fill-white text-white"></i></div>
                                     </div>
-                                    {/* <Link to="ProductDetail"> */}
                                     <div className="rating">
-                                        <h2>{`${item.address}, ${item.country}`}</h2>
+                                        <Link to="ProductDetail" className='text-black'>
+                                            <h2>{`${item.address}, ${item.country}`}</h2>
+                                        </Link>
                                         <h2 className="right">&#9733; {item.star}</h2>
                                     </div>
-                                    {/* </Link> */}
-                                    <p className="color-prdct">{item.distance} kilometers away</p>
-                                    <p className="color-prdct">{month} {dateConverter(date)}</p>
+                                    <p className="color-product">{item.distance} kilometers away</p>
+                                    <p className="color-product">{month} {dateConverter(date)}</p>
                                     <p><strong>{new Intl.NumberFormat('id-id', { style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
                                 </div>
 
@@ -88,5 +86,4 @@ function Card() {
         </div>
     );
 }
-
 export default Card;

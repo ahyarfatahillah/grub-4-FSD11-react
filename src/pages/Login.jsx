@@ -48,7 +48,7 @@ const Login =() =>{
               title="Eight or more characters"
             />
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
-              <a href="#">Forgot Password?</a>
+              <a className="ref" href="#">Forgot Password?</a>
             </div>
             <button className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
