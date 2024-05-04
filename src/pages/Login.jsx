@@ -1,13 +1,11 @@
 import "../assets/styles/login.css";
 import loginIMG from "../assets/img/login.png"
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 const Login =() => { 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  
   const login = () => {
-    
     if ((username === 'grp4@email.com' && password === '#Rise123') || 
         (username === 'fsd11@email.com' && password === '#Batch11')) {
       const token = Math.random().toString(36).substr(2);
@@ -16,7 +14,6 @@ const Login =() => {
       alert('Username dan Password Anda salah!');
     }
   }
-  
     return (
         <div className="content">
         <div className="login-form">
@@ -109,7 +106,6 @@ const Login =() => {
         </div>
         {/* We’ll call or text you to confirm your number. Standard message and data rates apply. */}
       </div>
-      
     );
 }
 export default Login;
