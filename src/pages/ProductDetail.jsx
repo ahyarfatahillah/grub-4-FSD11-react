@@ -18,15 +18,16 @@ const ProductDetail = () => {
     <>
       <Navbar/>
       <br />
-      <div className="root-container mt-20">
+      <div className="root-container mt-2 w-screen mx-auto p-20 gap-5 flex flex-col">
       <ImgDetail/>
-        <main>
-            <div className="main-container">
+        <main className='flex gap-[15px] justify-between'>
+            <div className="main-container w-[70%]">
                 <SectionDetail/>
                 <ArticleDetail/>
             </div>
             <AsideDetail/>
         </main>
+        <div className="border-b border-gray-300 pt-5 " ></div>
         <div className="page">
             <PropertyRating />
             <UserRating />

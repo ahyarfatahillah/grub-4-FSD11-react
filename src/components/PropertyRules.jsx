@@ -1,9 +1,10 @@
 const PropertyRules = () => {
     return (
         <div>
-            <div className="ruless">
+            <div className="ruless pt-7">
                 <h2 className="font-bold text-[24px]">Things to know</h2>
-                <div className="rules">
+                <br />
+                <div className="rules flex justify-between leading-7">
                     <div className="rulsetting1">
                         <div className="font-semibold">House rules</div>
                         <div>Check-in after 3:00 PM <br/> Checkout before 11:00 AM <br/> 8 guest maximum <br/><a href="">Show more</a></div>

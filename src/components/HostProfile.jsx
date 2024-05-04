@@ -1,7 +1,7 @@
 const HostProfile = () => {
     return (
         <div>
-            <div className="host bg-yellow-100 rounded-2xl p-5 flex gap-10 flex-col md:flex-row items-center">
+            <div className="host bg-yellow-100 rounded-2xl p-5 flex gap-10 flex-col md:flex-row items-center my-[25px]">
                 <div className="md:w-[50%] flex flex-col text-wrap p-10">
                     <div className="bg-white p-5 rounded-3xl flex justify-between items-center md:flex-col">
                         <div className="hostname flex flex-col">
@@ -46,11 +46,12 @@ const HostProfile = () => {
                             <br/>
                             <p>Response time: within an hour</p>
                         </div>
-                        <button>Contact Host</button>
+                        <button className="button">Contact Host</button>
                         <div>⚠️ To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</div>
                     </div>
                 </div>
             </div>
+            <div className="border-b border-gray-300 pt-5 pb-5" ></div>
         </div>
     )
 }

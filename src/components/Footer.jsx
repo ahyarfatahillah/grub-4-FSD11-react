@@ -183,7 +183,7 @@ const Footer = () => {
         </div>
     </div>
       </footer>
-      <div className="footer-button">
+      <div className="footer-button hidden">
         <h4>Date</h4>
         <button>Changes dates</button>
       </div>
