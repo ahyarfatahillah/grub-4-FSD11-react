@@ -1,8 +1,8 @@
 import React from 'react'
-import Pical from '../assets/1.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi, faCar, faUtensils, faPaw, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
+import Calendar from './Calendar';
 
 
 const ArticleDetail = () => {
@@ -139,10 +139,10 @@ const ArticleDetail = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="calendar">
+                    <div className="calendar items-center">
                         <h3 className="font-bold text-[25px]">Select check-in date</h3>
                         <div>Add your travel dates for exact pricing</div>
-                        <img src={Pical} width="100%" id="hov"/>
+                        <div><Calendar /></div>
                         <div className='flex justify-between w-97p mb-8'>
                             <div>⌨️</div>
                             <a href="">Clear dates</a>
