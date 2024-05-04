@@ -1,7 +1,20 @@
 import "../assets/styles/login.css";
 import loginIMG from "../assets/img/login.png"
 import { Link } from "react-router-dom";
-const Login =() =>{
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+const Login =() => { 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const login = () => {
+    if ((username === 'grp4@email.com' && password === '#Rise123') || 
+        (username === 'fsd11@email.com' && password === '#Batch11')) {
+      const token = Math.random().toString(36).substr(2);
+      alert('Berhasil Login! Token: ' + token);
+    } else {
+      alert('Username dan Password Anda salah!');
+    }
+  }
     return (
         <div className="content">
         <div className="login-form">
@@ -29,10 +42,12 @@ const Login =() =>{
             <input
               className="md:text-base lg:text-lg text-xs"
               type="email"
-              name=""
+              //name=""
               placeholder="Example@email.com"
-              required=""
-              autofocus=""
+              //required=""
+              //autofocus=""
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <label htmlFor="Password" className="m-1 md:text-base text-xs lg:text-lg">
               Password
@@ -46,11 +61,13 @@ const Login =() =>{
               autofocus=""
               pattern=".{8,}"
               title="Eight or more characters"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
               <a className="blue" href="#">Forgot Password?</a>
             </div>
-            <button className="btn text-xs lg:text-base md:text-sm" type="submit">
+            <button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
@@ -90,7 +107,6 @@ const Login =() =>{
         </div>
         {/* We’ll call or text you to confirm your number. Standard message and data rates apply. */}
       </div>
-      
     );
 }
 export default Login;
