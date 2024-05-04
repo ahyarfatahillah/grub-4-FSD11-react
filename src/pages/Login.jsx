@@ -47,13 +47,13 @@ const Login =() =>{
               title="Eight or more characters"
             />
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
-              <a href="#">Forgot Password?</a>
+              <a className="blue" href="#">Forgot Password?</a>
             </div>
             <button className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
-              Don't Have An Account? <a href="../SignUp/index.html">Sign up</a>
+              Don't Have An Account? <a className="blue" href="../SignUp/index.html">Sign up</a>
             </p>
           </form>
           <div className="or-container">

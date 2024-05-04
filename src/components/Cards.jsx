@@ -15,7 +15,6 @@ function Card() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
     function monthName(data) {

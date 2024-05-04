@@ -71,14 +71,11 @@ p{
     font-weight: 600;
     transition: 0.3s ease;
 }
-p.account a{
+.blue{
     color: #1E4AE9;
 }
 p.account a:hover{
  text-decoration: underline;
-}
-div a{
-    color: #1E4AE9;
 }
 div a:hover{
  text-decoration: underline;
