@@ -39,7 +39,7 @@ function Card() {
             return (
                 <div className='slide'>
                     <Slide autoplay={false}>
-                        {data.map((each, index) => (<Link to="ProductDetail" key={index}><img className="img-product" src={each} /></Link>))}
+                        {data.map((each, index) => (<Link to="ProductDetail" ><img className="img-product" src={each} /></Link>))}
                     </Slide>
                 </div>)
         }
