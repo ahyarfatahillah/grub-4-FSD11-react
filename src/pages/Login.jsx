@@ -1,5 +1,6 @@
 import "../assets/styles/login.css";
 import loginIMG from "../assets/img/login.png"
+import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 const Login =() => { 
@@ -64,38 +65,38 @@ const Login =() => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
-              <a href="#">Forgot Password?</a>
+              <a className="blue" href="#">Forgot Password?</a>
             </div>
             <button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
-              Don't Have An Account? <a href="../SignUp/index.html">Sign up</a>
+              Don't Have An Account? <Link to="../Signup"> Sign up </Link> 
             </p>
           </form>
           <div className="or-container">
             <h3>or</h3>
-            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png"
                 alt="#"
               />
               Continue With Facebook
-            </button>
-            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            </button></Link>
+            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
                 alt="#"
               />
               Continue with Google
-            </button>
-            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            </button></Link> 
+            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://help.apple.com/assets/6362E41904F57C36D47F1246/6362E41E04F57C36D47F1254/en_US/cfef5ce601689564e0a39b4773f20815.png"
                 alt="#"
               />
               Continue with Apple
-            </button>
+            </button></Link> 
           </div>
         </div>
         <div className="right-img form-img ">
