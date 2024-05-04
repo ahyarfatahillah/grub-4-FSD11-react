@@ -33,9 +33,9 @@ body{
     align-items:right;
     object-fit: cover;
 }
-p{
+/* p{
     line-height: 25px;
-}
+} */
 .btn,button,input{
     border-radius: 5px;
 }
@@ -74,16 +74,10 @@ p{
 .blue{
     color: #1E4AE9;
 }
-p.account a:hover{
+p.account blue:hover{
  text-decoration: underline;
 }
-<<<<<<< HEAD
-=======
-.ref{
-    color: #1E4AE9;
-}
->>>>>>> f1ea65fb675c2725828d65957ade1518358193c3
-div a:hover{
+div .blue:hover{
  text-decoration: underline;
 }
 .cright{
@@ -181,10 +175,7 @@ div a:hover{
     z-index: -2;
     }
 
-
-
   @media only screen and (max-width: 1960px) {
-
     .or-container h3:before{
         width:220px;
     }

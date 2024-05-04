@@ -2,7 +2,6 @@ import "../assets/styles/login.css";
 import loginIMG from "../assets/img/login.png"
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 const Login =() => { 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -71,7 +70,7 @@ const Login =() => {
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
-              Don't Have An Account? <Link to="../Signup"> Sign up </Link> 
+              Don't Have An Account? <Link to="../Signup" className="blue"> Sign up </Link> 
             </p>
           </form>
           <div className="or-container">

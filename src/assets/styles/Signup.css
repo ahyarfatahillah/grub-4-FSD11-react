@@ -33,9 +33,6 @@
     align-items:right;
     object-fit: cover;
 }
-.line{
-    line-height: 25px;
-}
 .btn,button,input{
     border-radius: 5px;
 }
@@ -70,18 +67,6 @@
     padding: 14px 15px;
     font-weight: 600;
     transition: 0.3s ease;
-}
-p.account a:hover{
- text-decoration: underline;
-}
-.blue{
-    color: #1E4AE9;
-}
-div a:hover{
- text-decoration: underline;
-}
-.cright{
-    color:#959CB6;
 }
 .top-img{
     width:100%;
