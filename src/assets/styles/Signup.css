@@ -33,7 +33,7 @@
     align-items:right;
     object-fit: cover;
 }
-p{
+.line{
     line-height: 25px;
 }
 .btn,button,input{
@@ -71,13 +71,10 @@ p{
     font-weight: 600;
     transition: 0.3s ease;
 }
-p.account a{
-    color: #1E4AE9;
-}
 p.account a:hover{
  text-decoration: underline;
 }
-div a{
+.blue{
     color: #1E4AE9;
 }
 div a:hover{
@@ -92,7 +89,6 @@ div a:hover{
     object-fit: cover;
     border-radius:25px;
 }
-
 /* button google */
 .btng{
     margin-top: 15px;
@@ -146,7 +142,6 @@ div a:hover{
     transition: 0.3s ease;
 }
 /* button google */
-
 .or-container h3{
     text-align: center;
     align-items: center;
@@ -179,11 +174,7 @@ div a:hover{
     top: 50%;
     z-index: -2;
     }
-
-
-
   @media only screen and (max-width: 1960px) {
-
     .or-container h3:before{
         width:220px;
     }

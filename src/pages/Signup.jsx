@@ -1,5 +1,6 @@
-import "../assets/styles/signup.css";
+import "../assets/styles/Signup.css";
 import signupIMG from "../assets/img/signup.png"
+import { Link } from "react-router-dom";
 const Signup = () => {
     return (
         <div className="content">
@@ -58,9 +59,9 @@ const Signup = () => {
                         pattern=".{8,}"
                         title="Eight or more characters"
                     />
-                    <button className="btn text-xs lg:text-base md:text-sm" type="submit">
+                    <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit">
                         Sign up
-                    </button>
+                    </button></Link>
                 </form>
                 <div className="or-container">
                     <h3>or</h3>
