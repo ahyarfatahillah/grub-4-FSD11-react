@@ -66,9 +66,9 @@ const Login =() => {
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
               <a className="blue" href="#">Forgot Password?</a>
             </div>
-            <button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
+            <Link to=".."><button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
-            </button>
+            </button></Link>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
               Don't Have An Account? <Link to="../Signup" className="blue"> Sign up </Link> 
             </p>
