@@ -1,5 +1,6 @@
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 // import ProductDetail from ".pages/ProductDetail"
 import './App.scss';
 import {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     path: "ProductDetail",
     element: <div>ProductDetail{}</div>
     // <ProductDetail/>
+  },
+  {
+    path: "SignUp",
+    element: <Signup/>
   },
 ]);
 

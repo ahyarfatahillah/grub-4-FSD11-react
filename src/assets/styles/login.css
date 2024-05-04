@@ -77,6 +77,12 @@ p{
 p.account a:hover{
  text-decoration: underline;
 }
+<<<<<<< HEAD
+=======
+.ref{
+    color: #1E4AE9;
+}
+>>>>>>> f1ea65fb675c2725828d65957ade1518358193c3
 div a:hover{
  text-decoration: underline;
 }
@@ -143,7 +149,6 @@ div a:hover{
     transition: 0.3s ease;
 }
 /* button google */
-
 .or-container h3{
     text-align: center;
     align-items: center;
@@ -152,7 +157,6 @@ div a:hover{
     font-size: 20px;
     width: 100%;
     position:relative;
-
     }
     .or-container h3:before{
     content: "";
@@ -229,7 +233,6 @@ div a:hover{
         width:90px;
     }
   }
-
   @media only screen and (min-width: 1025px) {
     .top-img {
         display:none;        

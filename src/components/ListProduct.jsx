@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from "./Cards"
+import Card from "./Card"
 // import ShowMore from "../components/showmore"
 const ListProducts = () => {
     return (
@@ -9,5 +9,4 @@ const ListProducts = () => {
         </main>
     )
 }
-
 export default ListProducts;
