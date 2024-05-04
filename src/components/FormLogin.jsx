@@ -1,7 +1,6 @@
-import "../assets/styles/login.css";
-import loginIMG from "../assets/img/login.png"
-import { Link } from "react-router-dom";
-const Login =() =>{
+import React from 'react'
+import loginIMG from "../assets/img/login.png";
+const FormLogin = () => {
     return (
         <div className="content">
         <div className="login-form">
@@ -29,10 +28,12 @@ const Login =() =>{
             <input
               className="md:text-base lg:text-lg text-xs"
               type="email"
-              name=""
+              //name=""
               placeholder="Example@email.com"
-              required=""
-              autofocus=""
+              //required=""
+              //autofocus=""
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <label htmlFor="Password" className="m-1 md:text-base text-xs lg:text-lg">
               Password
@@ -46,40 +47,42 @@ const Login =() =>{
               autofocus=""
               pattern=".{8,}"
               title="Eight or more characters"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
-              <a className="blue" href="#">Forgot Password?</a>
+              <a href="#">Forgot Password?</a>
             </div>
-            <button className="btn text-xs lg:text-base md:text-sm" type="submit">
+            <button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
               Sign in
             </button>
             <p className="text-xs lg:text-base md:text-sm mt-6 account text-center">
-              Don't Have An Account? <Link to="../Signup"> Sign up </Link> 
+              Don't Have An Account? <a href="../SignUp/index.html">Sign up</a>
             </p>
           </form>
           <div className="or-container">
             <h3>or</h3>
-            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png"
                 alt="#"
               />
               Continue With Facebook
-            </button></Link>
-            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            </button>
+            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
                 alt="#"
               />
               Continue with Google
-            </button></Link> 
-            <Link to=".."><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            </button>
+            <button className="btng text-xs lg:text-base md:text-sm" type="submit">
               <img
                 src="https://help.apple.com/assets/6362E41904F57C36D47F1246/6362E41E04F57C36D47F1254/en_US/cfef5ce601689564e0a39b4773f20815.png"
                 alt="#"
               />
               Continue with Apple
-            </button></Link> 
+            </button>
           </div>
         </div>
         <div className="right-img form-img ">
@@ -93,4 +96,5 @@ const Login =() =>{
       
     );
 }
-export default Login;
+
+export default FormLogin

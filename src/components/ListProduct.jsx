@@ -9,5 +9,4 @@ const ListProducts = () => {
         </main>
     )
 }
-
 export default ListProducts;
