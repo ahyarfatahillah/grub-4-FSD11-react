@@ -2,8 +2,8 @@ import { SprayCan, BadgeCheck, KeyRound, MessageSquare, Map, Tag } from "lucide-
 
 const UserRating = () => {
     return (
-        <div>
-            <div className="rating flex justify-center w-full border-b border-gray-300 pb-4">
+        <div className="lg:flex hidden text-wrap">
+            <div className="rating flex justify-center  border-b border-gray-300 pb-4">
                 <div className="ratebox mx-7">
                     <div className="text-[20px] font-bold">Overal rating</div>
                     <div className="flex items-center">
