@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import ConverterDateUnix from'./Atoms/ConverterDateUnix.jsx'
+import ConverterMonthUnix from'./Atoms/ConverterMonthUnix.jsx'
 import { Link } from "react-router-dom";
-import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+import ImageSlider from './Atoms/ImageSlider.jsx';
 // import data from "../mocks/dummy.json"
 
 function Card() {
@@ -19,44 +21,19 @@ function Card() {
         };
         fetchData();
     }, []);
-    function monthName(data) {
-        const date = new Date(data * 1000);
-        const month = date.getMonth();
-        const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-        const monthName = monthList[month];
-        return monthName;
-    }
-
-    function dateConverter(data) {
-        const dateUnix = new Date(data * 1000);
-        const dateNew = dateUnix.getDate();
-        return dateNew;
-    }
-    function isImage(data) {
-        if (data.length < 2) {
-            return (<img className="img-product" src={data} alt="img-card" />)
-        } else {
-            return (
-                <div className='slide'>
-                    <Slide autoplay={false}>
-                        {data.map((each, index) => (<Link to="ProductDetail" ><img className="img-product" src={each} /></Link>))}
-                    </Slide>
-                </div>)
-        }
-    }
     return (
-        <div className="xl:mt-[200px] mb-[20px]">
+        <div>
             {data ? (
                 <section className="flex products">
                     {data.map(item => {
                         const wishlist = item.wishlist ? "visible" : "hidden";
                         const wishlist2 = item.wishlist ? "hidden" : "visible";
                         const guestFav = item.favorite ? "visible" : "hidden";
-                        const month = monthName(item.date);
-                        const date = dateConverter(item.date);
+                        const month = ConverterMonthUnix(item.date);
+                        const date = ConverterDateUnix(item.date);
                         return (<div key={item.id} className="card-product">
                             <div>       
-                                {isImage(item.picture)}
+                                <ImageSlider data={item.picture}/>
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
@@ -70,7 +47,7 @@ function Card() {
                                         <h2 className="right">&#9733; {item.star}</h2>
                                     </div>
                                     <p className="color-product">{item.distance} kilometers away</p>
-                                    <p className="color-product">{month} {dateConverter(date)}</p>
+                                    <p className="color-product">{month} {date}</p>
                                     <p><strong>{new Intl.NumberFormat('id-id', { style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
                                 </div>
 
