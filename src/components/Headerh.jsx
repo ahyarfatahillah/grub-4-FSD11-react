@@ -3,8 +3,8 @@ const Header = () => {
   return (
     <header>
         <div className="h-20 w-screen py-[10px] flex justify-between ps-8 pe-16 border-b-[1px] items-center fixed top-0 bg-white max-sm:pe-2 ">
-            <a href="../index.html"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
-                className=" object-cover w-28 max-sm:w-16" /> </a>
+            <Link to="/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+                className=" object-cover w-28 max-sm:w-16" /> </Link>
             <div className="pl-[200px] px-8 max-sm:hidden ">
                 <div
                     className="flex items-center  rounded-full shadow-sm hover:shadow-md h-12 border p-3">
