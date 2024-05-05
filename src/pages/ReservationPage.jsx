@@ -2,13 +2,14 @@ import React from 'react'
 import Water from '../assets/img/water.jpg'
 import Airbnb from '../assets/img/airbnb.png'
 import { Facebook,Instagram,Apple,Mail} from 'lucide-react';
+import {Link} from "react-router-dom";
 const ReservationPage = () => {
     return (
         <div>
             <nav className="lg:ml-4 hidden md:block">
-                <a href="#">
+                <Link to="/">
                     <img src={Airbnb} alt="Icon" className="w-32" />
-                </a>
+                </Link>
             </nav>
             <main className="grid grid-cols-1 md:grid-cols-2 md:gap-10 lg:gap-24 my-14 mx-10 md:mx-1 lg:mx-28">
                 <section>
