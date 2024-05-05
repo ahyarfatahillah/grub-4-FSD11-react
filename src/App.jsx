@@ -2,7 +2,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import ReservationPage from "./pages/ReservationPage"
-// import ProductDetail from ".pages/ProductDetail"
+import ProductDetail from "./pages/ProductDetail"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },  
   {
     path: "ProductDetail",
-    element: <div>ProductDetail</div>
+    element: <ProductDetail/>
     // <ProductDetail/>
   },
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     element: <Signup/>
   },
   {
-    path: "ReservationPage",
+    path: "/ReservationPage",
     element: <ReservationPage/>
   },
 ]);
