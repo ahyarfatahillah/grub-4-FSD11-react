@@ -26,12 +26,12 @@ const Navbar = () => {
                     <button className="p-3 flex items-center text-sm font-medium hover:bg-gray-100 hover:rounded-full max-md:hidden">
                         <span className="material-symbols-outlined">language</span>
                     </button>
-                    <a href="../Login/index.html"
+                    <Link to="/Login"
                         className="flex justify-evenly items-center gap-2 rounded-full border shadow-sm h-10 w-20 py-6 pl-3 pr-2 hover:shadow-md hover:cursor-pointer">
                         <i className="fa-solid fa-bars"></i>
                         <button className="bg-gray-500 text-white rounded-full text-center w-7 h-7"><i
                                 className="fa-solid fa-user"></i></button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
