@@ -8,6 +8,10 @@ margin: 0;
 padding: 0;
 overflow-x: hidden;
 }
+.rc-menu-item{
+  margin-inline: 16px !important;
+  margin-block: 16px !important;
+  }
 .card-product {
 position: relative;
 }
