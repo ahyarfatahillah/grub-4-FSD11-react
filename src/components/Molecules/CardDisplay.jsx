@@ -20,7 +20,7 @@ function CardDisplay({ data }) {
                     const month = ConverterMonthUnix(item.date);
                     const date = ConverterDateUnix(item.date);
                     const addressHome = `${item.address}, ${item.country}`;
-                    const addressEllipsis = addressHome.length > 23 ? addressHome.substring(0, 20) + "..." : addressHome;
+                    const addressEllipsis = addressHome.length > 24 ? addressHome.substring(0, 20) + "..." : addressHome;
                     return (
                         <div key={item.id} className="mt-2 card-product">
                             <div>
