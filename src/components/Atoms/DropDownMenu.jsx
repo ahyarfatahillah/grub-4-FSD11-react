@@ -7,9 +7,9 @@ import 'rc-dropdown/assets/index.css';
 function DropdownMenu({ onSelect }) {
     const menu = (
         <Menu onSelect={onSelect}>
-            <MenuItem key="Profile" className="text-center">Profile</MenuItem>
-            <MenuItem key="Wishlist" className="text-center">Wishlist</MenuItem>
-            <Link to="Login"><MenuItem key="Login" className="text-center">Login</MenuItem></Link>
+            <MenuItem key="/Profile" className="text-center">Profile</MenuItem>
+            <Link to="/Wishlist"><MenuItem key="Wishlist" className="text-center">Wishlist</MenuItem></Link>
+            <Link to="/Login"><MenuItem key="Login" className="text-center">Login</MenuItem></Link>
         </Menu>
     );
 

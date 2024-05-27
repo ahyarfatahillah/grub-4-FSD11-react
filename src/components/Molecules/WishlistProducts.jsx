@@ -29,10 +29,12 @@ function CardDisplay({ data }) {
         }));
     };
 
+    const filteredData = Array.isArray(data) ? data.filter(item => item.wishlist) : [];
+
     return (
         <section className="products">
             <div className="flex products">
-                {data.slice(0, displayCount).map(item => {
+                {filteredData.slice(0, displayCount).map(item => {
                     const guestFav = item.favorite ? "visible" : "hidden";
                     const month = ConverterMonthUnix(item.date);
                     const date = ConverterDateUnix(item.date);
@@ -52,11 +54,11 @@ function CardDisplay({ data }) {
                                             onClick={() => toggleWishlist(item.id)}
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            <i className={`fa-heart ${isWishlisted ? 'fa-regular' : 'fa-solid'} fill-white text-white`}></i>
+                                            <i className={`fa-heart ${isWishlisted ? 'fa-solid' : 'fa-regular'} fill-white text-white`}></i>
                                         </div>
                                     </div>
                                     <div className="rating">
-                                        <Link to={`/ProductDetail/${item.id}`} className='text-black'>
+                                        <Link to={`../ProductDetail/${item.id}`} className='text-black'>
                                             <h2>{addressEllipsis}</h2>
                                         </Link>
                                         <h2 className="right">&#9733; {item.star}</h2>
@@ -71,7 +73,7 @@ function CardDisplay({ data }) {
                 })}
             </div>
             <div className="my-16 text-center">
-                {data.length > displayCount && (
+                {filteredData.length > displayCount && (
                     <button onClick={handleShowMore} className="my-2 button button1">Show More</button>
                 )}
             </div>

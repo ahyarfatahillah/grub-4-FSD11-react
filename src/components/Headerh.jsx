@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import React from 'react';
-import DropdownMenu from './Atoms/DropDownMenu' // Import the DropdownMenu component
+import DropdownMenu from './Atoms/DropDownMenu';
+import IsHidden from "./Atoms/IsHidden";
+
 function onSelect({ key }) {
     console.log(`${key} selected`);
 }
-const Header = () => {
+
+const Header = ({ isHidden }) => {
+    const visibilityClass = IsHidden ({ data: isHidden});
+
     return (
         <header>
             <div className="h-20 w-screen py-[10px] flex justify-between ps-8 pe-16 w-screen border-b-[1px] items-center fixed top-0 bg-white z-50">
@@ -44,7 +49,7 @@ const Header = () => {
                 </div>
             </div>
             {/* Catagory */}
-            <div className="flex items-center shadow-sm  h-24 w-screen space-x-5 fixed top-[80px] bg-white z-40 max-md:hidden">
+            <div className={`${visibilityClass} flex items-center shadow-sm h-24 w-screen space-x-5 fixed top-[80px] bg-white z-40 max-md:hidden`}>
                 <div className="flex items-center space-x-3">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2 pl-8">
                         <img

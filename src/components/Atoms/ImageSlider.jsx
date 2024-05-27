@@ -11,7 +11,7 @@ function ImageSlider({ data }) {
             <div className='slide'>
                 <Slide autoplay={false}>
                     {data.map((each, index) => (
-                        <Link key={index} to="ProductDetail">
+                        <Link key={index} to="../ProductDetail">
                             <img className="img-product" src={each} alt={`image-${index}`} />
                         </Link>
                     ))}

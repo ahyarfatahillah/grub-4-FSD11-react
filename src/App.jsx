@@ -3,6 +3,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import ReservationPage from "./pages/ReservationPage"
 import ProductDetail from "./pages/ProductDetail"
+import Wishlist from "./pages/Wishlist"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -17,26 +18,26 @@ const router = createBrowserRouter([
     element:<Home/>,
   },
   {
-    path: "about",
-    element: <div>About</div>,
-  },
-  {
     path: "/Login",
     element: <Login/>
   },  
   {
-    path: "ProductDetail",
+    path: "/ProductDetail",
     element: <ProductDetail/>
     // <ProductDetail/>
   },
   {
-    path: "SignUp",
+    path: "/SignUp",
     element: <Signup/>
   },
   {
     path: "/ReservationPage",
     element: <ReservationPage/>
   },
+  {
+    path:"/Wishlist",
+    element:<Wishlist/>
+  }
 ]);
 
 function App() {
