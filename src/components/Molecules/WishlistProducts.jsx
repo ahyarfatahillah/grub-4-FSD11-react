@@ -12,8 +12,8 @@ function CardDisplay({ data }) {
     useEffect(() => {
         // Initialize wishlist state based on item.wishlist values
         const initialWishlistState = {};
-        data.forEach(item => {
-            initialWishlistState[item.id] = item.wishlist;
+        data.forEach(item => { //Untuk Setiap data item
+            initialWishlistState[item.id] = item.wishlist; //inisialisasi berdasarkan id dari item.wishlist
         });
         setWishlist(initialWishlistState);
     }, [data]);
@@ -49,12 +49,12 @@ function CardDisplay({ data }) {
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
-                                        <div 
-                                            className="zoom love-product visible" 
-                                            onClick={() => toggleWishlist(item.id)}
-                                            style={{ cursor: 'pointer' }}
-                                        >
-                                            <i className={`fa-heart ${isWishlisted ? 'fa-solid' : 'fa-regular'} fill-white text-white`}></i>
+                                        <div className="fa-heart-container" onClick={() => toggleWishlist(item.id)}>
+                                            <i className="fa-heart fa-regular fa-heart-outline"></i>
+                                            {isWishlisted ?
+                                                <i className="fa-heart fa-solid fa-heart-solid-red"></i> :
+                                                <i className="fa-heart fa-solid fa-heart-solid-black"></i>
+                                            }
                                         </div>
                                     </div>
                                     <div className="rating">
