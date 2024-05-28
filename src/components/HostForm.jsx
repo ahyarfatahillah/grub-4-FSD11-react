@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Host() {
+function HostForm() {
     const [formData, setFormData] = useState({
         address: '',
         country: '',
@@ -226,4 +226,4 @@ function Host() {
     );
 }
 
-export default Host;
+export default  HostForm;

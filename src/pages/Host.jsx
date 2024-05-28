@@ -1,12 +1,12 @@
 import React from 'react'
-import Host from '../components/Host'
+import HostForm from '../components/HostForm'
 import Header from '../components/Headerh'
 import Footer from '../components/Footerh'
 const Hostd = () => {
     return (
         <div>
             <Header isHidden={true} />
-            <Host />
+            <HostForm />
             <Footer />
         </div>
 
