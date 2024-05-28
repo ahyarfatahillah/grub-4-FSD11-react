@@ -1,9 +1,7 @@
 import React from 'react'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi, faCar, faUtensils, faPaw, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
 import Calendar from './Calendar';
-
 
 const ArticleDetail = () => {
   return (

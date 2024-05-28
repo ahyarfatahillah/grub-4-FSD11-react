@@ -4,6 +4,7 @@ import Signup from "./pages/Signup"
 import ReservationPage from "./pages/ReservationPage"
 import ProductDetail from "./pages/ProductDetail"
 import Wishlist from "./pages/Wishlist"
+import Host from "./pages/Host"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path:"/Wishlist",
     element:<Wishlist/>
+  },
+  {
+    path:"/Host",
+    element:<Host/>
   }
 ]);
 

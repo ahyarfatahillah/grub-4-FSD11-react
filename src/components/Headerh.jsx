@@ -34,9 +34,9 @@ const Header = ({ isHidden }) => {
                 </div>
                 <div>
                     <div className="flex justify-end items-center gap-1">
-                        <button className="px-4 py-3 text-sm font-medium hover:bg-gray-100 hover:rounded-full">
+                        <Link to="/Host" className="px-4 py-3 text-sm font-medium hover:bg-gray-100 hover:rounded-full">
                             Airbnb your home
-                        </button>
+                        </Link>
                         <button className="p-3 flex items-center text-sm font-medium hover:bg-gray-100 hover:rounded-full">
                             <span className="material-symbols-outlined">language</span>
                         </button>

@@ -1,4 +1,3 @@
-import "../assets/styles/Signup.css";
 import signupIMG from "../assets/img/signup.png"
 import { Link } from "react-router-dom";
 const Signup = () => {

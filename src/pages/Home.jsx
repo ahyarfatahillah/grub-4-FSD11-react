@@ -1,5 +1,5 @@
 import "../assets/styles/home.css";
-import Main from "../components/ListProduct"
+import Main from "../components/Card"
 import Header from "../components/Headerh"
 import Footer from "../components/Footerh"
 const Home = () => {

@@ -4,6 +4,7 @@ import ConverterMonthUnix from '../Atoms/ConverterMonthUnix.jsx';
 import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
 import ImageSlider from "../Atoms/ImageSlider.jsx";
+import WishlistIcon from "../Atoms/WishlistIcon.jsx"
 
 function CardDisplay({ data }) {
     const [displayCount, setDisplayCount] = useState(20);
@@ -39,7 +40,6 @@ function CardDisplay({ data }) {
                     const addressHome = `${item.address}, ${item.country}`;
                     const addressEllipsis = addressHome.length > 24 ? addressHome.substring(0, 20) + "..." : addressHome;
                     const isWishlisted = wishlist[item.id];
-
                     return (
                         <div key={item.id} className="mt-2 card-product">
                             <div>
@@ -47,13 +47,7 @@ function CardDisplay({ data }) {
                                 <div className="mx-2">
                                     <div>
                                         <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
-                                        <div className="fa-heart-container" onClick={() => toggleWishlist(item.id)}>
-                                            <i className="fa-heart fa-regular fa-heart-outline"></i>
-                                            {isWishlisted ?
-                                                <i className="fa-heart fa-solid fa-heart-solid-red"></i> :
-                                                <i className="fa-heart fa-solid fa-heart-solid-black"></i>
-                                            }
-                                        </div>
+                                        <WishlistIcon  itemId={item.id} isWishlisted={isWishlisted} toggleWishlist={toggleWishlist} />
                                     </div>
                                     <div className="rating">
                                         <Link to={`/ProductDetail/${item.id}`} className='text-black'>
