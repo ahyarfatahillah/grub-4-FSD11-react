@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
 import ImageSlider from "../Atoms/ImageSlider.jsx";
 import WishlistIcon from "../Atoms/WishlistIcon.jsx"
-
+import Distance from '../Atoms/Distance.jsx';
+import CurrentGeolocation from '../Atoms/CurrentGeolocation.jsx';
 function CardDisplay({ data }) {
     const [displayCount, setDisplayCount] = useState(20);
     const [wishlist, setWishlist] = useState({});
@@ -29,7 +30,8 @@ function CardDisplay({ data }) {
             [id]: !prevWishlist[id]
         }));
     };
-
+        //Geolocaton User Current Position
+        const { userLat, userLon } = CurrentGeolocation();
     return (
         <section className="products">
             <div className="flex products">
@@ -40,6 +42,8 @@ function CardDisplay({ data }) {
                     const addressHome = `${item.address}, ${item.country}`;
                     const addressEllipsis = addressHome.length > 24 ? addressHome.substring(0, 20) + "..." : addressHome;
                     const isWishlisted = wishlist[item.id];
+                    const homeLat = item.latitude;
+                    const homeLon = item.longitude;
                     return (
                         <div key={item.id} className="mt-2 card-product">
                             <div>
@@ -56,6 +60,7 @@ function CardDisplay({ data }) {
                                         <h2 className="right">&#9733; {item.star}</h2>
                                     </div>
                                     <p className="color-product">{item.distance} kilometers away</p>
+                                    <Distance userLat={userLat} userLon={userLon} homeLat={homeLat} homeLon={homeLon} />
                                     <p className="color-product">{month} {date}</p>
                                     <p><strong>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
                                 </div>
