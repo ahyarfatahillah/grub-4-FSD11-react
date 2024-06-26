@@ -8,7 +8,39 @@ function onSelect({ key }) {
 const Header = () => {
     return (
         <header>
-            <div className="h-20 w-screen py-[10px] flex justify-between ps-8 pe-16 w-screen border-b-[1px] items-center fixed top-0 bg-white z-50">
+            <nav className="flex items-center justify-between container mx-auto px-5 lg:px-10 py-5">
+                <Link to="/"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+                    className=" object-cover w-28"
+                /></Link>
+                <div className="pl-[200px] px-8 hidden lg:block">
+                    <div className="flex items-center justify-start w-[340px] rounded-full shadow-sm hover:shadow-md h-12 border">
+                        <button className="border-r-2 border-gray-100 px-4 text-sm font-medium">
+                            Anywhere
+                        </button>
+                        <button className="border-r-2 border-gray-100 px-2 text-sm font-medium">
+                            Any week
+                        </button>
+                        <button className="border-gray-100 px-4 gray-text text-sm font-medium">
+                            Add guests
+                        </button>
+                        <i className="fa-solid fa-magnifying-glass bg-red-500 text-white rounded-full p-2 hover:bg-red-600" />
+                    </div>
+                </div>
+                <div>
+                    <div className="flex justify-end items-center gap-1">
+                        <button className="px-4 py-3 text-sm font-medium hover:bg-gray-100 hover:rounded-full">
+                            Airbnb your home
+                        </button>
+                        <div>
+                            <div className="flex justify-end items-center gap-1">
+                                <DropdownMenu onSelect={onSelect} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            {/* <div className="h-20 w-screen py-[10px] flex justify-between ps-8 pe-16 w-screen border-b-[1px] items-center fixed top-0 bg-white z-50">
                 <Link to="/"><img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
                     className=" object-cover w-28"
@@ -42,8 +74,13 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            {/* Catagory */}
+            </div> */}
+
+            
+
+            
+            {/* Catagory Mas Fadil */}
+{/*             
             <div className="flex items-center shadow-sm  h-24 w-screen space-x-5 fixed top-[80px] bg-white z-40 max-md:hidden">
                 <div className="flex items-center space-x-3">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2 pl-8">
@@ -143,16 +180,7 @@ const Header = () => {
                         <p className="text-xs font-normal">Golfing</p>
                     </div>
                 </div>
-                <span className="material-symbols-outlined pl-4">arrow_circle_right</span>
-                <div className="flex justify-around items-center rounded-xl shadow-md h-12 w-24 border max-lg:hidden">
-                    <span className="material-symbols-outlined">sync_alt</span>
-                    <p className="text-xs font-normal">Filters</p>
-                </div>
-                <div className="flex justify-around items-center rounded-xl shadow-md h-12 w-[220px] border max-xl:hidden">
-                    <p className="text-xs font-normal">Display total before taxes</p>
-                    <span className="material-symbols-outlined">toggle_off</span>
-                </div>
-            </div>
+            </div> */}
         </header>
     )
 }
