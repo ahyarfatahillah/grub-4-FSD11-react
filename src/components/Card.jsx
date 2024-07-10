@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import CardDisplay from './Molecules/CardDisplay';
+import { fetchData } from '../services/Properties'; 
 
 function Card() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/data");
-                const jsonData = await response.json();
-                setData(jsonData);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+        const fetchDataAndSetData = async () => {
+            const jsonData = await fetchData();
+            setData(jsonData);
         };
-        fetchData();
+        
+        fetchDataAndSetData();
     }, []);
+
     return (
         <div className="main-container sm:mt-[90px] md:mt-[180px] lg:mt-[200px]">
             {data ? (
@@ -26,4 +24,5 @@ function Card() {
         </div>
     );
 }
+
 export default Card;

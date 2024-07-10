@@ -11,7 +11,8 @@ import Rating from '../Atoms/Rating.jsx';
 import Month from '../Atoms/Month.jsx';
 import DateComponent from '../Atoms/Date.jsx';
 import HomeLocation from '../Atoms/HomeLocation.jsx';
-function CardDisplay({ data, userId }) {
+
+function CardDisplay({ data, userId, filterType }) {
     const [displayCount, setDisplayCount] = useState(20);
     const handleShowMore = () => {
         setDisplayCount(prevCount => prevCount + 20);
@@ -34,13 +35,14 @@ function CardDisplay({ data, userId }) {
         }));
     };
 
-    const filteredData = Array.isArray(data) ? data.filter(item => item.pets) : [];
-    //Geolocaton User Current Position
+    // Change the filter condition to check if Type matches the filterType prop
+    const filteredData = Array.isArray(data) ? data.filter(item => item.type == filterType) : [];
+    // Geolocation User Current Position
     const { userLat, userLon } = CurrentGeolocation();
 
     return (
         <section className="products">
-            <div className="font-bold text-3xl px-16 py-4 sm:">Wishlists</div>
+            <div className="font-bold text-3xl px-16 py-4 sm:">{filterType}</div>
             <div className="flex products">
                 {filteredData.slice(0, displayCount).map(item => {
                     return (
@@ -53,7 +55,7 @@ function CardDisplay({ data, userId }) {
                                         <WishlistIcon userId={userId} itemId={item.id} isWishlisted={wishlist[item.id]} toggleWishlist={toggleWishlist} />
                                     </div>
                                     <div className="rating">
-                                        <Link to={`/ProductDetail/${item.id}`} className='text-black'>
+                                        <Link to="/ProductDetail" className='text-black'>
                                             <AddressEllipsis address={item.address} country={item.country} />
                                         </Link>
                                         <Rating star={item.star} />

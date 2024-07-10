@@ -1,73 +1,91 @@
 import React, { useState, useEffect } from 'react';
-import ConverterDateUnix from '../Atoms/ConverterDateUnix.jsx';
-import ConverterMonthUnix from '../Atoms/ConverterMonthUnix.jsx';
 import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
 import ImageSlider from "../Atoms/ImageSlider.jsx";
-import WishlistIcon from "../Atoms/WishlistIcon.jsx"
-import Distance from '../Atoms/Distance.jsx';
+import WishlistIcon from "../Atoms/WishlistIcon.jsx";
 import CurrentGeolocation from '../Atoms/CurrentGeolocation.jsx';
-function CardDisplay({ data }) {
+import GuestFavorite from '../Atoms/GuestFavorite.jsx';
+import AddressEllipsis from '../Atoms/AddressEllipsis.jsx';
+import FormattedPrice from '../Atoms/FormattedPrice.jsx';
+import Rating from '../Atoms/Rating.jsx';
+import Month from '../Atoms/Month.jsx';
+import DateComponent from '../Atoms/Date.jsx';
+import HomeLocation from '../Atoms/HomeLocation.jsx';
+
+function CardDisplay({ data, userId }) {
     const [displayCount, setDisplayCount] = useState(20);
     const [wishlist, setWishlist] = useState({});
 
-    useEffect(() => {
-        // Initialize wishlist state based on item.wishlist values
-        const initialWishlistState = {};
-        data.forEach(item => {
-            initialWishlistState[item.id] = item.wishlist;
-        });
-        setWishlist(initialWishlistState);
-    }, [data]);
+    // useEffect(() => {
+    //     // Fetch wishlist data from the database
+    //     const fetchWishlistData = async () => {
+    //         try {
+    //             const response = await fetch(`http://localhost:3001/api/wishlists?userID=${userId}`);
+    //             const wishlistData = await response.json();
+    //             const initialWishlistState = {};
+    //             data.forEach(item => {
+    //                 initialWishlistState[item.id] = wishlistData.includes(item.id);
+    //             });
+    //             setWishlist(initialWishlistState);
+    //         } catch (error) {
+    //             console.error('Failed to fetch wishlist data:', error);
+    //         }
+    //     };
+
+    //     fetchWishlistData();
+    // }, [data, userId]);
 
     const handleShowMore = () => {
         setDisplayCount(prevCount => prevCount + 20);
     };
 
-    const toggleWishlist = (id) => {
+    const toggleWishlist = async (id) => {
+        const newWishlistState = !wishlist[id];
         setWishlist(prevWishlist => ({
             ...prevWishlist,
-            [id]: !prevWishlist[id]
+            [id]: newWishlistState
         }));
+        try {
+            await fetch(`/api/wishlist/toggle`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, propertyId: id, isWishlisted: newWishlistState }),
+            });
+        } catch (error) {
+            console.error('Failed to toggle wishlist status:', error);
+        }
     };
-        //Geolocaton User Current Position
-        const { userLat, userLon } = CurrentGeolocation();
+
+    // Geolocation User Current Position
+    const { userLat, userLon } = CurrentGeolocation();
+
     return (
         <section className="products">
             <div className="flex products">
-                {data.slice(0, displayCount).map(item => {
-                    const guestFav = item.favorite ? "visible" : "hidden";
-                    const month = ConverterMonthUnix(item.date);
-                    const date = ConverterDateUnix(item.date);
-                    const addressHome = `${item.address}, ${item.country}`;
-                    const addressEllipsis = addressHome.length > 24 ? addressHome.substring(0, 20) + "..." : addressHome;
-                    const isWishlisted = wishlist[item.id];
-                    const homeLat = item.latitude;
-                    const homeLon = item.longitude;
-                    return (
-                        <div key={item.id} className="mt-2 card-product">
-                            <div>
-                                <ImageSlider data={item.picture} />
-                                <div className="mx-2">
-                                    <div>
-                                        <h2 id="guest-fav" className={`text-fav ${guestFav}`}>Guest favorite</h2>
-                                        <WishlistIcon  itemId={item.id} isWishlisted={isWishlisted} toggleWishlist={toggleWishlist} />
-                                    </div>
-                                    <div className="rating">
-                                        <Link to={`/ProductDetail/${item.id}`} className='text-black'>
-                                            <h2>{addressEllipsis}</h2>
-                                        </Link>
-                                        <h2 className="right">&#9733; {item.star}</h2>
-                                    </div>
-                                    <p className="color-product">{item.distance} kilometers away</p>
-                                    <Distance userLat={userLat} userLon={userLon} homeLat={homeLat} homeLon={homeLon} />
-                                    <p className="color-product">{month} {date}</p>
-                                    <p><strong>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</strong> night</p>
+                {data.slice(0, displayCount).map(item => (
+                    <div key={item.id} className="mt-2 card-product">
+                        <div>
+                            <ImageSlider data={item.Images} />
+                            <div className="mx-2">
+                                <div>
+                                    <GuestFavorite favorite={item.star} />
+                                    <WishlistIcon userId={userId} itemId={item.id} isWishlisted={wishlist[item.id]} toggleWishlist={toggleWishlist} />
                                 </div>
+                                <div className="rating">
+                                    <Link to={`/ProductDetail/${item.id}`} className='text-black'>
+                                        <AddressEllipsis address={item.address} country={item.country} />
+                                    </Link>
+                                    <Rating star={item.star} />
+                                </div>
+                                <HomeLocation userLat={userLat} userLon={userLon} homeLat={item.lat} homeLon={item.lon} />
+                                <p className="color-product"><Month timestamp={item.availabilityDateFrom} /> <DateComponent timestamp={item.availabilityDateFrom} /></p>
+                                <FormattedPrice price={item.price} />
                             </div>
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
             <div className="my-16 text-center">
                 {data.length > displayCount && (

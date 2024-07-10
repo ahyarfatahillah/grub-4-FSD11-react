@@ -9,7 +9,7 @@ function onSelect({ key }) {
 }
 
 const Header = ({ isHidden }) => {
-    const visibilityClass = IsHidden ({ data: isHidden});
+    const visibilityClass = IsHidden({ data: isHidden });
 
     return (
         <header>
@@ -51,104 +51,58 @@ const Header = ({ isHidden }) => {
             {/* Catagory */}
             <div className={`${visibilityClass} flex items-center shadow-sm h-24 w-screen space-x-5 fixed top-[80px] bg-white z-40 max-md:hidden`}>
                 <div className="flex items-center space-x-3">
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2 pl-8">
-                        <img
-                            src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Amazing pools</p>
-                    </div>
+                    <Link to="/TinyHomes">
+                        <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2 pl-8">
+                            <img
+                                src="https://a0.muscache.com/pictures/3271df99-f071-4ecf-9128-eb2d2b1f50f0.jpg"
+                                alt="Tiny Homes"
+                                className="h-7"
+                            />
+                            <p className="text-xs font-normal">Tiny Homes</p>
+                        </div>
+                    </Link>
+                    <Link to="/Cabins">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
                         <img
-                            src="https://a0.muscache.com/pictures/f0c5ca0f-5aa0-4fe5-b38d-654264bacddf.jpg"
-                            alt=""
+                            src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg"
+                            alt="Cabins"
                             className="h-7"
                         />
-                        <p className="text-xs font-normal">Play</p>
+                        <p className="text-xs font-normal">Cabins</p>
                     </div>
+                    </Link>
+                    <Link to="/Apartements">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
                         <img
                             src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg"
                             alt=""
                             className="h-7"
                         />
-                        <p className="text-xs font-normal">Historical homes</p>
+                        <p className="text-xs font-normal">Apartements</p>
                     </div>
+                    </Link>
+                    <Link to="/Mansions">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
                         <img
-                            src="https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg"
-                            alt=""
+                            src="https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg"
+                            alt="Apartements"
                             className="h-7"
                         />
-                        <p className="text-xs font-normal">Countryside</p>
+                        <p className="text-xs font-normal">Mansions</p>
                     </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Surfing</p>
-                    </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Farms</p>
-                    </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Amazing views</p>
-                    </div>
+                    </Link>
+                    <Link to="/Rooms">
                     <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
                         <img
                             src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg"
-                            alt=""
+                            alt="Mansions"
                             className="h-7"
                         />
                         <p className="text-xs font-normal">Rooms</p>
                     </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="	https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Lakefront</p>
-                    </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="	https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Beachfront</p>
-                    </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">OMG!</p>
-                    </div>
-                    <div className="flex flex-col items-center text-gray-400 hover:text-black gap-2">
-                        <img
-                            src="https://a0.muscache.com/pictures/6b639c8d-cf9b-41fb-91a0-91af9d7677cc.jpg"
-                            alt=""
-                            className="h-7"
-                        />
-                        <p className="text-xs font-normal">Golfing</p>
-                    </div>
+                    </Link>
                 </div>
-                <span className="material-symbols-outlined pl-4">arrow_circle_right</span>
+                {/* <span className="material-symbols-outlined pl-4">arrow_circle_right</span> */}
                 <div className="flex justify-around items-center rounded-xl shadow-md h-12 w-24 border max-lg:hidden">
                     <span className="material-symbols-outlined">sync_alt</span>
                     <p className="text-xs font-normal">Filters</p>

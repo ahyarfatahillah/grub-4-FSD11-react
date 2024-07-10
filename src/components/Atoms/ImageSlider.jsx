@@ -5,7 +5,7 @@ import 'react-slideshow-image/dist/styles.css';
 
 function ImageSlider({ data }) {
     if (data.length < 2) {
-        return <Link to="ProductDetail"><img className="img-product" src={data} alt="img-card" /></Link>
+        return <Link to="ProductDetail"> <div className='slide'><img className="img-product" src={data} alt="img-card" /></div></Link>
     } else {
         return (
             <div className='slide'>

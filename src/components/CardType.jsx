@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import WishlistPrducts from './Molecules/WishlistProducts';
+import TinyHomes from './Molecules/TinyHomes';
 import { fetchData } from '../services/Properties'; 
-function CardWishlistProducts() {
+
+function CardType({ filterType }) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -14,13 +15,14 @@ function CardWishlistProducts() {
     }, []);
 
     return (
-        <div className="main-container sm:mt-[75px] md:mt-[100px] lg:mt-[100px]">
+        <div className="main-container sm:mt-[80px] md:mt-[170px] lg:mt-[170px]">
             {data ? (
-                <WishlistPrducts data={data} />
+                <TinyHomes data={data} filterType={filterType} />
             ) : (
                 <p>Loading... Please do <span className='text-rose-600 font-bold'>npx json-server ./src/mocks/dummy.json</span> then <span className='text-rose-600 font-bold'>refresh this page</span></p>
             )}
         </div>
     );
 }
-export default CardWishlistProducts;
+
+export default CardType;
