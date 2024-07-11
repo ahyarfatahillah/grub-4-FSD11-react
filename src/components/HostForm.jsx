@@ -7,7 +7,7 @@ function HostForm() {
         dateAvailableFrom: '',
         dateAvailableUntil: '',
         price: '',
-        category: '',
+        type: '',
         amenities: {
             tv: false,
             ac: false,
@@ -16,7 +16,19 @@ function HostForm() {
             kitchen: false,
             freeParking: false,
         },
-        images: []
+        images: [],
+        description: '',
+        cleaningFee: '',
+        lon: '',
+        lat: '',
+        locationDescription: '',
+        houseRules: '',
+        safetyProperty: '',
+        cancellationPolicy: '',
+        bedroomsNumber: '',
+        bathsNumber: '',
+        services: '',
+        notIncluded: ''
     });
 
     const handleChange = (e) => {
@@ -132,21 +144,21 @@ function HostForm() {
                             <label className="flex items-center">
                                 <input
                                     type="radio"
-                                    name="category"
-                                    value="house"
-                                    checked={formData.category === 'house'}
+                                    name="type"
+                                    value="TinyHomes"
+                                    checked={formData.type === 'TinyHomes'}
                                     onChange={handleChange}
                                     required
                                     className="mr-2"
                                 />
-                                House
+                                Tiny Home
                             </label>
                             <label className="flex items-center">
                                 <input
                                     type="radio"
-                                    name="category"
-                                    value="mansion"
-                                    checked={formData.category === 'mansion'}
+                                    name="type"
+                                    value="Mansions"
+                                    checked={formData.type === 'Mansions'}
                                     onChange={handleChange}
                                     required
                                     className="mr-2"
@@ -156,14 +168,38 @@ function HostForm() {
                             <label className="flex items-center">
                                 <input
                                     type="radio"
-                                    name="category"
-                                    value="apartment"
-                                    checked={formData.category === 'apartment'}
+                                    name="type"
+                                    value="Apartements"
+                                    checked={formData.type === 'Apartements'}
                                     onChange={handleChange}
                                     required
                                     className="mr-2"
                                 />
-                                Apartment
+                                Apartement
+                            </label>
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="Rooms"
+                                    checked={formData.type === 'Rooms'}
+                                    onChange={handleChange}
+                                    required
+                                    className="mr-2"
+                                />
+                                Room
+                            </label>
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="Cabins"
+                                    checked={formData.type === 'Cabins'}
+                                    onChange={handleChange}
+                                    required
+                                    className="mr-2"
+                                />
+                                Cabin
                             </label>
                         </div>
                     </div>
@@ -183,6 +219,159 @@ function HostForm() {
                                 </label>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Description:
+                            <textarea
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>              
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Bedrooms Number:
+                            <input
+                                type="number"
+                                name="bedroomsNumber"
+                                value={formData.bedroomsNumber}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Baths Number:
+                            <input
+                                type="number"
+                                name="bathsNumber"
+                                value={formData.bathsNumber}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div> 
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Cleaning Fee:
+                            <input
+                                type="number"
+                                name="cleaningFee"
+                                value={formData.cleaningFee}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                   
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Longitude:
+                            <input
+                                type="number"
+                                step="any"
+                                name="lon"
+                                value={formData.lon}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Latitude:
+                            <input
+                                type="number"
+                                step="any"
+                                name="lat"
+                                value={formData.lat}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Location Description:
+                            <textarea
+                                name="locationDescription"
+                                value={formData.locationDescription}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            House Rules:
+                            <textarea
+                                name="houseRules"
+                                value={formData.houseRules}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Safety Property:
+                            <textarea
+                                name="safetyProperty"
+                                value={formData.safetyProperty}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Services:
+                            <textarea
+                                name="services"
+                                value={formData.services}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Not Included:
+                            <textarea
+                                name="notIncluded"
+                                value={formData.notIncluded}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Cancellation Policy:
+                            <textarea
+                                name="cancellationPolicy"
+                                value={formData.cancellationPolicy}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                            />
+                        </label>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
@@ -226,4 +415,4 @@ function HostForm() {
     );
 }
 
-export default  HostForm;
+export default HostForm;
