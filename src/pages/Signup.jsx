@@ -60,8 +60,8 @@ const Signup = () => {
         setError('Password must be at least 8 characters long');
         return;
       }
-      
-      const result = await fetch('http://localhost:3001/api/users', {
+      const port = import.meta.env.VITE_API_PORT
+      const result = await fetch(`http://localhost:${port}/api/users`, {
         body: JSON.stringify(user),
         headers: {
           'Content-Type': 'application/json'
