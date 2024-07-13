@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const EditProfileForm = () => {
+    const port = import.meta.env.VITE_API_PORT;
     const [formData, setFormData] = useState({
         name: '',
         photoURL: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
@@ -31,7 +32,7 @@ const EditProfileForm = () => {
                 const userID = decodedToken.id;
 
                 setLoading(true);
-                const response = await fetch(`http://localhost:3001/api/users/${userID}`, {
+                const response = await fetch(`http://localhost:${port}/api/users/${userID}`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${jwtToken}`,
@@ -84,7 +85,7 @@ const EditProfileForm = () => {
             const userID = decodedToken.id;
 
             setLoading(true);
-            const response = await fetch(`http://localhost:3001/api/users/${userID}`, {
+            const response = await fetch(`http://localhost:${port}/api/users/${userID}`, {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${jwtToken}`,
