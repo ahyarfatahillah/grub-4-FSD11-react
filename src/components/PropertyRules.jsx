@@ -1,4 +1,4 @@
-const PropertyRules = () => {
+const PropertyRules = ({property}) => {
     return (
         <div>
             <div className="ruless pt-7">
@@ -7,15 +7,15 @@ const PropertyRules = () => {
                 <div className="rules flex justify-between leading-7">
                     <div className="rulsetting1">
                         <div className="font-semibold">House rules</div>
-                        <div>Check-in after 3:00 PM <br/> Checkout before 11:00 AM <br/> 8 guest maximum <br/><a href="">Show more</a></div>
+                        <p>{property.houseRules}</p>
                     </div>
                     <div className="rulsetting2">
                         <div className="font-semibold">Safety & property</div>
-                        <div>Pool/hot tub without a gate or lock <br/> Nearby lake, river, other body of water <br/> Carbon monoxide detector not required <br/><a href="">Show more</a></div>
+                        <p>{property.safetyProperty}</p>
                     </div>
                     <div className="rulsetting3">
                         <div className="font-semibold">Cancellation policy</div>
-                        <div>Add your trip dates to get the cancellation details for this stay.<br/><a href="">Add dates</a></div>
+                        <p>{property.cancellationPolicy}</p>
                     </div>
                 </div>
             </div>
