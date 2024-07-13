@@ -5,51 +5,77 @@ import React, { useState } from 'react';
 const Signup = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({
-        email: '',
-        password: ''
+      email: '',
+      phone: '',
+      password: '',
+      name: `newUser${(Math.random() * 99999).toFixed(0)}`,
+      photoURL: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+      address: 'not filled in yet',
+      governmentID: 'not filled in yet',
+      EmergencyContact: 'not filled in yet',
+      paymentinfo: 'not filled in yet',
+      tripHistory: 'no history',
+      description: 'Hello There!',
+      languanges: 'not filled in yet',
     });
     const [error, setError] = useState('');
-
+  
     const emailHandler = (e) => {
-        setUser({
-            ...user,
-            email: e.target.value
-        })
+      setUser({
+        ...user,
+        email: e.target.value
+      })
     }
 
     const phoneHandler = (e) => {
         setUser({
-            ...user,
-            phone: e.target.value
+          ...user,
+          phone: e.target.value
         })
-    }
-
+      }
+    
     const passwordHandler = (e) => {
-        setUser({
-            ...user,
-            password: e.target.value
-        })
+      setUser({
+        ...user,
+        password: e.target.value
+      })
     }
-
+  
     const submitHandler = async (e) => {
-        e.preventDefault();
-        const port = import.meta.env.VITE_API_PORT
-        const url = `http://localhost:${port}/api/users `;
-        const result = await fetch(url, {
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
-        });
-        const json = await result.json()
-        console.log(json, user)
-        if (json.message) {
-            setError(json.message);
-        } else {
-            alert('Registration Successful');
-            navigate('/login');
-        }
+      e.preventDefault();
+
+      if (!user.email.includes('@')) {
+        setError('Invalid email address');
+        return;
+      }
+      if (!/^\d+$/.test(user.phone)) {
+        setError('Phone number must contain only digits');
+        return;
+      }
+      if (user.phone.length < 6) {
+        setError('Invalid phone number');
+        return;
+      }
+      if (user.password.length < 8) {
+        setError('Password must be at least 8 characters long');
+        return;
+      }
+      
+      const result = await fetch('http://localhost:3001/api/users', {
+        body: JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      });
+      const json = await result.json()
+      console.log(json, user)
+      if (json.message) {
+        setError(json.message);
+      } else {
+        alert('Registration Successful');
+        navigate('/login');
+      }
     }
 
     return (
@@ -72,7 +98,7 @@ const Signup = () => {
                         The world is your greatest teacher.
                     </p>
                 </div>
-                <form className="form-login" action="#" method="post" onSubmit={submitHandler}>
+                <form className="form-login" action="#" method="post" onSubmit={ submitHandler }>
                     <label htmlFor="email" className="m-1 text-xs md:text-base lg:text-lg">
                         Email
                     </label>
@@ -84,7 +110,7 @@ const Signup = () => {
                         required=""
                         autofocus=""
                         value={user.email}
-                        onChange={emailHandler}
+                        onChange={ emailHandler }
                     />
                     <label htmlFor="Phone" className="m-1 text-xs md:text-base lg:text-lg">
                         Phone Number
@@ -98,7 +124,7 @@ const Signup = () => {
                         required=""
                         autofocus=""
                         value={user.phone}
-                        onChange={phoneHandler}
+                        onChange={ phoneHandler }
                     />
                     <label htmlFor="Password" className="m-1 md:text-base text-xs lg:text-lg">
                         Password
@@ -113,35 +139,36 @@ const Signup = () => {
                         pattern=".{8,}"
                         title="Eight or more characters"
                         value={user.password}
-                        onChange={passwordHandler}
+                        onChange={ passwordHandler }
                     />
-                    <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit" onClick={submitHandler}>
+                    {error && <p className="error-message text-red-500">{error}</p>}
+                    <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit" onClick={ submitHandler }>
                         Sign up
                     </button></Link>
                 </form>
                 <div className="or-container">
                     <h3>or</h3>
                     <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png"
-                            alt="#"
-                        />
-                        Continue With Facebook
-                    </button></Link>
-                    <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
-                            alt="#"
-                        />
-                        Continue with Google
-                    </button></Link>
-                    <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
-                        <img
-                            src="https://help.apple.com/assets/6362E41904F57C36D47F1246/6362E41E04F57C36D47F1254/en_US/cfef5ce601689564e0a39b4773f20815.png"
-                            alt="#"
-                        />
-                        Continue with Apple
-                    </button></Link>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png"
+              alt="#"
+            />
+            Continue With Facebook
+          </button></Link>
+          <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
+              alt="#"
+            />
+            Continue with Google
+          </button></Link>
+           <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+            <img
+              src="https://help.apple.com/assets/6362E41904F57C36D47F1246/6362E41E04F57C36D47F1254/en_US/cfef5ce601689564e0a39b4773f20815.png"
+              alt="#"
+            />
+            Continue with Apple
+          </button></Link>
                 </div>
             </div>
             <div className="right-img form-img ">
