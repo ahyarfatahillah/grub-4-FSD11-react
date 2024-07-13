@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import HostForm from '../components/HostForm';
+import Profile from '../components/EditProfile';
 import Header from '../components/Headerh';
 import Footer from '../components/Footerh';
 
@@ -22,7 +22,7 @@ const Hostd = () => {
   return (
     <div>
       <Header isHidden={true} />
-      <HostForm />
+      <Profile />
       <Footer />
     </div>
   );

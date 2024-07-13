@@ -11,6 +11,7 @@ import Mansions from "./pages/Mansions"
 import Rooms from "./pages/Rooms"
 import Apartments from "./pages/Apartments"
 import Trip from "./pages/Trip"
+import Profile from "./pages/Profile"
 import './App.scss';
 import {
   createBrowserRouter,
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path:"/Trip",
     element:<Trip/>
+  },
+  {
+    path:"/Profile",
+    element:<Profile/>
   },
 ]);
 
