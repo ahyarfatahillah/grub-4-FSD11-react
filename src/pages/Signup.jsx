@@ -6,17 +6,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({
       email: '',
-      phone: '',
-      password: '',
-      name: `newUser${(Math.random() * 99999).toFixed(0)}`,
-      photoURL: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-      address: 'not filled in yet',
-      governmentID: 'not filled in yet',
-      EmergencyContact: 'not filled in yet',
-      paymentinfo: 'not filled in yet',
-      tripHistory: 'no history',
-      description: 'Hello There!',
-      languanges: 'not filled in yet',
+      password: ''
     });
     const [error, setError] = useState('');
   
@@ -43,24 +33,6 @@ const Signup = () => {
   
     const submitHandler = async (e) => {
       e.preventDefault();
-
-      if (!user.email.includes('@')) {
-        setError('Invalid email address');
-        return;
-      }
-      if (!/^\d+$/.test(user.phone)) {
-        setError('Phone number must contain only digits');
-        return;
-      }
-      if (user.phone.length < 6) {
-        setError('Invalid phone number');
-        return;
-      }
-      if (user.password.length < 8) {
-        setError('Password must be at least 8 characters long');
-        return;
-      }
-      
       const result = await fetch('http://localhost:3001/api/users', {
         body: JSON.stringify(user),
         headers: {
@@ -141,7 +113,6 @@ const Signup = () => {
                         value={user.password}
                         onChange={ passwordHandler }
                     />
-                    {error && <p className="error-message text-red-500">{error}</p>}
                     <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit" onClick={ submitHandler }>
                         Sign up
                     </button></Link>

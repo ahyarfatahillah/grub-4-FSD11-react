@@ -1,6 +1,5 @@
 import "../assets/styles/login.css";
-import React, { useState } from 'react';
-import userData from '../mocks/users.json';
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import loginIMG from '../assets/img/login.png';
 
@@ -28,7 +27,9 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const result = await fetch('http://localhost:3001/api/login', {
+    const port = import.meta.env.VITE_API_PORT
+    const url = `http://localhost:${port}/api/login `;
+    const result = await fetch(url, {
       body: JSON.stringify(user),
       headers: {
         'Content-Type': 'application/json'
@@ -44,6 +45,7 @@ const Login = () => {
       alert('Login Berhasil');
       localStorage.setItem('_token', json.token);
       navigate('/');
+      console.log(localStorage.getItem('_token'));
     }
   }
 
@@ -115,7 +117,7 @@ const Login = () => {
             />
             Continue with Google
           </button></Link>
-          <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
+           <Link to="/"><button className="btng text-xs lg:text-base md:text-sm" type="submit">
             <img
               src="https://help.apple.com/assets/6362E41904F57C36D47F1246/6362E41E04F57C36D47F1254/en_US/cfef5ce601689564e0a39b4773f20815.png"
               alt="#"
