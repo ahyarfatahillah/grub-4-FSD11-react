@@ -240,8 +240,8 @@ function HostForm() {
         <input
             type="radio"
             name="type"
-            value="TinyHomes"
-            checked={formData.type === 'TinyHomes'}
+            value="Tiny Homes"
+            checked={formData.type === 'Tiny Homes'}
             onChange={handleChange}
             required
             className="mr-2"
