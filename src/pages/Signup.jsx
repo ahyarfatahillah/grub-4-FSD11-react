@@ -34,8 +34,8 @@ const Signup = () => {
     const submitHandler = async (e) => {
       e.preventDefault();
       const port = import.meta.env.VITE_API_PORT
-      const url = `http://localhost:${port}/api/ `;
-      const result = await fetch('http://localhost:3001/api/users', {
+      const url = `http://localhost:${port}/api/users `;
+      const result = await fetch(url, {
         body: JSON.stringify(user),
         headers: {
           'Content-Type': 'application/json'

@@ -86,7 +86,7 @@ function HostForm() {
             window.alert('Property created successfully!'); // Alert user
     
             // Step 2: Post the URL with PropertyID
-            const urlResponse = await fetch(`http://localhost:3001/api/images`, {
+            const urlResponse = await fetch(`http://localhost:${port}/api/images`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

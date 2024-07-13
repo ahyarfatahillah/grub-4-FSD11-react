@@ -9,14 +9,14 @@ function DropdownMenu({ onSelect }) {
     
     const handleLogout = () => {
         localStorage.removeItem('_token');
-        window.location.reload();
+        window.location.href = 'http://localhost:5173/';
     };
 
     const menu = (
         <Menu onSelect={onSelect}>
             {_token && (
                 <>
-                    <MenuItem key="/Profile" className="text-center text-[1rem]">Profile</MenuItem>
+                    <Link to="/Profile"> <MenuItem key="/Profile" className="text-center text-[1rem]">Profile</MenuItem></Link>
                     <Link to="/Trip">
                         <MenuItem key="Trip" className="text-center text-[1rem]">Trip</MenuItem>
                     </Link>
