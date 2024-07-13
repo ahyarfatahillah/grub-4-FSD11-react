@@ -1,6 +1,55 @@
 import signupIMG from "../assets/img/signup.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+
 const Signup = () => {
+    const navigate = useNavigate();
+    const [user, setUser] = useState({
+      email: '',
+      password: ''
+    });
+    const [error, setError] = useState('');
+  
+    const emailHandler = (e) => {
+      setUser({
+        ...user,
+        email: e.target.value
+      })
+    }
+
+    const phoneHandler = (e) => {
+        setUser({
+          ...user,
+          phone: e.target.value
+        })
+      }
+    
+    const passwordHandler = (e) => {
+      setUser({
+        ...user,
+        password: e.target.value
+      })
+    }
+  
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      const result = await fetch('http://localhost:3001/api/users', {
+        body: JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      });
+      const json = await result.json()
+      console.log(json, user)
+      if (json.message) {
+        setError(json.message);
+      } else {
+        alert('Registration Successful');
+        navigate('/login');
+      }
+    }
+
     return (
         <div className="content">
             <div className="login-form">
@@ -21,7 +70,7 @@ const Signup = () => {
                         The world is your greatest teacher.
                     </p>
                 </div>
-                <form className="form-login" action="#" method="post">
+                <form className="form-login" action="#" method="post" onSubmit={ submitHandler }>
                     <label htmlFor="email" className="m-1 text-xs md:text-base lg:text-lg">
                         Email
                     </label>
@@ -32,6 +81,8 @@ const Signup = () => {
                         placeholder="Example@email.com"
                         required=""
                         autofocus=""
+                        value={user.email}
+                        onChange={ emailHandler }
                     />
                     <label htmlFor="Phone" className="m-1 text-xs md:text-base lg:text-lg">
                         Phone Number
@@ -44,6 +95,8 @@ const Signup = () => {
                         pattern="[0-9]+"
                         required=""
                         autofocus=""
+                        value={user.phone}
+                        onChange={ phoneHandler }
                     />
                     <label htmlFor="Password" className="m-1 md:text-base text-xs lg:text-lg">
                         Password
@@ -57,8 +110,10 @@ const Signup = () => {
                         autofocus=""
                         pattern=".{8,}"
                         title="Eight or more characters"
+                        value={user.password}
+                        onChange={ passwordHandler }
                     />
-                    <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit">
+                    <Link to="../Login"><button className="btn text-xs lg:text-base md:text-sm" type="submit" onClick={ submitHandler }>
                         Sign up
                     </button></Link>
                 </form>

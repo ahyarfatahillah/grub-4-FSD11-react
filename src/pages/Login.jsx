@@ -5,22 +5,45 @@ import { Link, useNavigate } from 'react-router-dom';
 import loginIMG from '../assets/img/login.png';
 
 const Login = () => {
-  const history = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
   const [error, setError] = useState('');
 
-  const login = () => {
-    const user = userData.users.find(
-      (user) => user.email === username && user.password === password
-    );
+  const emailHandler = (e) => {
+    setUser({
+      ...user,
+      email: e.target.value
+    });
+  }
+  
+  const passwordHandler = (e) => {
+    setUser({
+      ...user,
+      password: e.target.value
+    });
+  }
 
-    if (user) {
-      const token = Math.random().toString(36).substr(2);
-      alert('Successfully logged in! Token: ' + token);
-      history("/");
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const result = await fetch('http://localhost:3001/api/login', {
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    });
+    const json = await result.json();
+    console.log(json, user);
+    if (json.message) {
+      setError(json.message);
+      alert(json.message);
     } else {
-      setError('Invalid email or password. Please try again.');
+      alert('Login Berhasil');
+      localStorage.setItem('_token', json.token);
+      navigate('/');
     }
   }
 
@@ -44,7 +67,7 @@ const Login = () => {
             The world is your greatest teacher.
           </p>
         </div>
-        <form className="form-login" onSubmit={(e) => e.preventDefault()}>
+        <form className="form-login" onSubmit={ submitHandler }>
           <label htmlFor="email" className="m-1 text-xs md:text-base lg:text-lg">
             Email
           </label>
@@ -52,8 +75,8 @@ const Login = () => {
             className="md:text-base lg:text-lg text-xs"
             type="email"
             placeholder="Example@email.com"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={ user.email }
+            onChange={ emailHandler }
           />
           <label htmlFor="password" className="m-1 md:text-base text-xs lg:text-lg">
             Password
@@ -62,13 +85,13 @@ const Login = () => {
             className="text-xs md:text-base lg:text-lg"
             type="password"
             placeholder="At least 8 characters"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={ user.password }
+            onChange={ passwordHandler }
           />
           <div className="text-right mt-2 mb-3 text-xs lg:text-base md:text-sm">
             <a className="blue" href="#">Forgot Password?</a>
           </div>
-          <button onClick={login} className="btn text-xs lg:text-base md:text-sm" type="submit">
+          <button onClick={ submitHandler } className="btn text-xs lg:text-base md:text-sm" type="submit">
             Sign in
           </button>
           {error && <div className="text-red-500">{error}</div>}
