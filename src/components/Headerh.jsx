@@ -10,7 +10,7 @@ function onSelect({ key }) {
 
 const Header = ({ isHidden }) => {
     const visibilityClass = IsHidden({ data: isHidden });
-
+    const _token = localStorage.getItem('_token');
     return (
         <header>
             <div className="h-20 w-screen py-[10px] flex justify-between ps-8 pe-16 w-screen border-b-[1px] items-center fixed top-0 bg-white z-50">
@@ -34,7 +34,7 @@ const Header = ({ isHidden }) => {
                 </div>
                 <div>
                     <div className="flex justify-end items-center gap-1">
-                        <Link to="/Host" className="px-4 py-3 text-sm font-medium hover:bg-gray-100 hover:rounded-full">
+                        <Link to={_token ? '/Host' : '/SignUp'} className="px-4 py-3 text-sm font-medium hover:bg-gray-100 hover:rounded-full">
                             Airbnb your home
                         </Link>
                         <button className="p-3 flex items-center text-sm font-medium hover:bg-gray-100 hover:rounded-full">

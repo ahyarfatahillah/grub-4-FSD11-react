@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function HostForm() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         address: '',
         country: '',
@@ -16,8 +17,6 @@ function HostForm() {
         houseRules: '',
         safetyProperty: '',
         cancellationPolicy: '',
-        bedroomsNumber: "1",
-        bathsNumber: "1",
         services: '',
         notIncluded: '',
         userID: null, // Will be automatically filled from JWT
@@ -35,8 +34,10 @@ function HostForm() {
         diningRoom: false,
         outdoor: false,
         parking: false,
-        bathroom: true,
-        guestNumber: "1",
+        bathroom: false,
+        guestNumber: "1",        
+        bedroomsNumber: "1",
+        bathsNumber: "1",
         hostedDate: Math.floor(Date.now() / 1000),
         kitchen: false,
         favorite: false,
@@ -45,18 +46,18 @@ function HostForm() {
     const [urlInput, setUrlInput] = useState('');
 
     // Example JWT token (replace with your actual token)
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJlbWFpbDNAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA4NzE3OTl9.rawUcDMIWqJ8szX7BarE-mOdI7TSHbXgo_9X3OkGXQM';
-
+    const getToken = localStorage.getItem('_token');
+    const token = getToken ? 'Bearer ' + getToken : 'Bearer ' +'eyJshbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJlbWFpbDBAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA4NjM2NjV9.eeLyurS-w4XLaMkm1GnORpPuV1Hm5icipN0o9XmFy84';
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         // Extract userID from the JWT token
-        const jwtToken = token.split(' ')[1]; // Remove 'Bearer ' prefix
+        const jwtToken = token; // Remove 'Bearer ' prefix
         const decodedToken = JSON.parse(atob(jwtToken.split('.')[1]));
         const userID = decodedToken.id;
         const port = import.meta.env.VITE_API_PORT;
         const apiUrl = `http://localhost:${port}/api/properties`;
-
+    
         try {
             // Step 1: Create the property and get PropertyID
             const propertyResponse = await fetch(apiUrl, {
@@ -72,16 +73,18 @@ function HostForm() {
                     userID: userID // Automatically add userID to formData
                 })
             });
-
+    
             if (!propertyResponse.ok) {
                 console.error('Failed to create property.');
+                window.alert('Failed to create property.'); // Alert user
                 return; // Exit if property creation fails
             }
-
+    
             const property = await propertyResponse.json(); // Assuming the response contains the created property object
             const propertyID = property.id; // Adjust this according to the actual response structure
             console.log('Property created successfully!', propertyID);
-
+            window.alert('Property created successfully!'); // Alert user
+    
             // Step 2: Post the URL with PropertyID
             const urlResponse = await fetch(`http://localhost:3001/api/images`, {
                 method: 'POST',
@@ -93,59 +96,20 @@ function HostForm() {
                     PropertyID: propertyID
                 })
             });
-
+    
             if (!urlResponse.ok) {
                 console.error('Failed to post URL.');
+                window.alert('Failed to post URL.'); // Alert user
                 return; // Exit if posting URL fails
             }
-
+    
             console.log('URL posted successfully!');
-
-            // Reset form or show success message
-            setFormData({
-                address: '',
-                country: '',
-                description: '',
-                price: '',
-                cleaningFee: '',
-                availabilityDateFrom: '',
-                availabilityDateTo: '',
-                type: '',
-                lon: '',
-                lat: '',
-                locationDesc: '',
-                houseRules: '',
-                safetyProperty: '',
-                cancellationPolicy: '',
-                bedroomsNumber: "1",
-                bathsNumber: "1",
-                services: '',
-                notIncluded: '',
-                userID: null, // Will be automatically filled from JWT
-                pets: false,
-                parties: false,
-                smoking: false,
-                coAlarm: false,
-                smokeAlarm: false,
-                scenicViews: false,
-                laundry: false,
-                family: false,
-                heatingCooling: false,
-                internet: false,
-                office: false,
-                diningRoom: false,
-                outdoor: false,
-                parking: false,
-                bathroom: true,
-                guestNumber: "1",
-                hostedDate: Math.floor(Date.now() / 1000),
-                kitchen: false,
-                favorite: false,
-            });
-            setUrlInput('');
-
+            window.alert('URL posted successfully!'); // Alert user
+            navigate('/');
+    
         } catch (error) {
             console.error('Error creating property or posting URL:', error);
+            window.alert('Error creating property or posting URL: ' + error); // Alert user with specific error message
         }
     };
 
