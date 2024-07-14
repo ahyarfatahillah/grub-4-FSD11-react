@@ -1,56 +1,70 @@
-import { SprayCan, BadgeCheck, KeyRound, MessageSquare, Map, Tag } from "lucide-react"
+import React from 'react';
+import { SprayCan, BadgeCheck, KeyRound, MessageSquare, Map, Tag } from 'lucide-react';
 
-const UserRating = () => {
+const UserRating = ({ property }) => {
+    const averageRating = property.averageRating || {};
+
     return (
         <div className="lg:flex hidden text-wrap">
-            <div className="rating flex justify-center  border-b border-gray-300 pb-4">
+            <div className="rating flex justify-center border-b border-gray-300 pb-4">
                 <div className="ratebox mx-7">
-                    <div className="text-[20px] font-bold">Overal rating</div>
+                    <div className="text-[20px] font-bold">Overall rating</div>
                     <div className="flex items-center">
-                        <div className="mr-2">5</div><hr className="w-[90%] border-black border-2"/><hr className="w-[10%] border-gray-300 border-2"></hr>
+                        <div className="mr-2">{averageRating.cleanlinessRate}</div>
+                        <hr className="w-[90%] border-black border-2" />
+                        <hr className="w-[10%] border-gray-300 border-2" />
                     </div>
                     <div className="flex items-center">
-                        <div className="mr-2">4</div><hr className="w-[10%] border-black border-2"/><hr className="w-[90%] border-gray-300 border-2"></hr>
+                        <div className="mr-2">{averageRating.accuracyRate}</div>
+                        <hr className="w-[10%] border-black border-2" />
+                        <hr className="w-[90%] border-gray-300 border-2" />
                     </div>
                     <div className="flex items-center">
-                        <div className="mr-2">3</div><hr className="w-[100%] border-gray-300 border-2"></hr>
+                        <div className="mr-2">{averageRating.checkInRate}</div>
+                        <hr className="w-[100%] border-gray-300 border-2" />
                     </div>
                     <div className="flex items-center">
-                        <div className="mr-2">2</div><hr className="w-[100%] border-gray-300 border-2"></hr>
+                        <div className="mr-2">{averageRating.communicationRate}</div>
+                        <hr className="w-[100%] border-gray-300 border-2" />
                     </div>
                     <div className="flex items-center">
-                        <div className="mr-2">1</div><hr className="w-[100%] border-gray-300 border-2"></hr>
+                        <div className="mr-2">{averageRating.locationRate}</div>
+                        <hr className="w-[100%] border-gray-300 border-2" />
+                    </div>
+                    <div className="flex items-center">
+                        <div className="mr-2">{averageRating.valueRate}</div>
+                        <hr className="w-[100%] border-gray-300 border-2" />
                     </div>
                 </div>
                 {/* -------------- */}
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8">
                     <div className="text-[20px] font-bold">Cleanliness</div> 
-                    <div>4.9</div>
+                    <div>{averageRating.cleanlinessRate}</div>
                     <SprayCan />
                 </div>
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8 text-[20px] font-bold">
-                    Accuracy<br/>4.9<br/>
+                    Accuracy<br />{averageRating.accuracyRate}<br />
                     <BadgeCheck />
                 </div>
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8 text-nowrap text-[20px] font-bold">
-                    Check-in<br/>5.0<br/>
+                    Check-in<br />{averageRating.checkInRate}<br />
                     <KeyRound />
                 </div>
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8 text-[20px] font-bold">
-                    Communication<br/>5.0<br/>
+                    Communication<br />{averageRating.communicationRate}<br />
                     <MessageSquare />
                 </div>
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8 text-[20px] font-bold">
-                    Location<br/>4.9<br/>
+                    Location<br />{averageRating.locationRate}<br />
                     <Map />
                 </div>
                 <div className="ratebox mx-7 border-l border-black pl-3 mb-8 text-[20px] font-bold">
-                    Value<br/>4.7<br/>
+                    Value<br />{averageRating.valueRate}<br />
                     <Tag />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default UserRating
+export default UserRating;

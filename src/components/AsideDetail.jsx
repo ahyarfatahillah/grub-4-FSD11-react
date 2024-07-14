@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ReservationPage from '../pages/ReservationPage';
 
-const AsideDetail = () => {
+const AsideDetail = ({property}) => {
     const [checkIn, setCheckIn] = useState(null);
     const [checkOut, setCheckOut] = useState(null);
     const [guest, setGuest] = useState(1);
     const pricePerGuest = 200000; // Biaya tambahan per guest setelah tamu pertama
-    const priceAtNight = 2500000;
+    const priceAtNight = property.price;
     const [priceHotel, setPriceHotel] = useState(0);
 
     useEffect(() => {
