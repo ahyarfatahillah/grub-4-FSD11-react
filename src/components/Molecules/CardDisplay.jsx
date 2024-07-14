@@ -67,7 +67,7 @@ function CardDisplay({ data, userId }) {
                 {data.slice(0, displayCount).map(item => (
                     <div key={item.id} className="mt-2 card-product">
                         <div>
-                            <ImageSlider data={item.Images} />
+                            <ImageSlider data={item.Images} id={item.id}/>
                             <div className="mx-2">
                                 <div>
                                     <GuestFavorite favorite={item.star} />

@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
-function ImageSlider({ data }) {
+function ImageSlider({ data,id }) {
     if (data.length < 2) {
-        return <Link to="ProductDetail"> <div className='slide'><img className="img-product" src={data} alt="img-card" /></div></Link>
+        return <Link to={`/ProductDetail/${id}`}> <div className='slide'><img className="img-product" src={data} alt="img-card" /></div></Link>
     } else {
         return (
             <div className='slide'>
                 <Slide autoplay={false}>
                     {data.map((each, index) => (
-                        <Link key={index} to="../ProductDetail">
+                        <Link key={index} to={`/ProductDetail/${id}`}>
                             <img className="img-product" src={each} alt={`image-${index}`} />
                         </Link>
                     ))}
